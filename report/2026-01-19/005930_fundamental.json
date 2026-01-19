@@ -1,8 +1,42 @@
 {
-    "checked_count": 16,
-    "total_items": 16,
-    "score_label": "Best",
-    "safety_probability": "> 90%",
-    "action_guidance": "1차 매수 최적기. 수익이 날 확률이 매우 높습니다.",
-    "code": "005930"
+    "code": "005930",
+    "analysis_date": "2026-01-19",
+    "metrics_fetched": {
+        "market_cap": "약 891조원 (Est.)",
+        "per": "17.8 (2025E)",
+        "pbr": "1.68 (2025E)",
+        "roe": "10.0% (2025E)",
+        "operating_margin": "12.7% (2025E)",
+        "net_profit_margin": "10.0% (Est.)",
+        "debt_ratio": "27.5% (Est.)",
+        "foreign_ownership": "51.86%",
+        "dividend_yield": "1.02%",
+        "date_used": "2026-01-19 Current / 2025 Consensus"
+    },
+    "checklist_details": {
+        "시가총액 3,000억 원 이상": true,
+        "증거금률 40% 이하": true,
+        "52주 최저가 대비율 10% 이하": false,
+        "52주 최고가 대비율 30% 이상": false,
+        "PER 업종 평균 이하 (또는 10 이하)": false,
+        "PBR 2 이하": true,
+        "PSR 5 이하": true,
+        "PCR 10 이하": false,
+        "PEG 1 이하": true,
+        "ROE 5% 이상": true,
+        "ROA 3% 이상": true,
+        "영업이익률 5% 이상": true,
+        "순이익률 3% 이상": true,
+        "매출액 증가율 1% 이상": true,
+        "순이익 증가율 1% 이상": true,
+        "부채 비율 100% 이하": true,
+        "유동 비율 200% 이상": true,
+        "유보율 200% 이상": true,
+        "배당수익률 2% 이상": false,
+        "외국인 지분율 30% 이상": true
+    },
+    "checked_count": 14,
+    "total_items": 20,
+    "score_label": "Excellent",
+    "action_guidance": "매수 고려 (펀더멘털 우수하나 주가 고점 부담)"
 }

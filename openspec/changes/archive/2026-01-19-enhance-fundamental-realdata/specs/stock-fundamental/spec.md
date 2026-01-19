@@ -1,11 +1,13 @@
-## MODIFIED Requirements
+## ADDED Requirements
 
 ### Requirement: Fundamental Analysis Automation
 The system SHALL evaluate the stock based on a predefined checklist using **real-time financial data**.
 - Source: Toss Securities (`tossinvest.com`).
-- Metrics: PER, PBR, ROE, Debt Ratio, Reserve Ratio, Foreigner Ratio, etc. (as available on Toss).
+- Metrics: PER, PBR, ROE, Debt Ratio, Reserve Ratio, Foreigner Ratio, etc.
 - Logic: Compare fetched values against checklist thresholds (e.g., PER < Industry Avg).
 
+#### Scenario: Successful Analysis
+- **WHEN** a valid stock code `005930` is provided
 #### Scenario: Successful Analysis
 - **WHEN** a valid stock code `005930` is provided
 - **THEN** system converts it to `A005930` (Toss format).
