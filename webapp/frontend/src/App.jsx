@@ -131,7 +131,16 @@ function App() {
                   {/* Header */}
                   <div className="flex justify-between items-end px-2">
                     <div>
-                      <h1 className="text-3xl font-bold text-gray-900">{selectedStock.stock_code}</h1>
+                      <a
+                        href={`https://www.tossinvest.com/stocks/A${selectedStock.stock_code}/order`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline decoration-toss-blue decoration-2"
+                      >
+                        <h1 className="text-3xl font-bold text-gray-900">
+                          {reportDetail.data?.fundamental?.name || selectedStock.stock_code} ({selectedStock.stock_code})
+                        </h1>
+                      </a>
                       <p className="text-gray-500 mt-1">{reportDetail.date}</p>
                     </div>
                     <div className="px-3 py-1 bg-blue-100 text-toss-blue rounded-full text-sm font-bold">
@@ -148,7 +157,7 @@ function App() {
                   >
                     {reportDetail.data?.images?.[0] ? (
                       <img
-                        src={`/images/${reportDetail.data.images[0].replace('\\', '/')}`}
+                        src={`/images/${selectedDate}/${reportDetail.data.images[0].replace(/\\/g, '/')}`}
                         alt="Chart"
                         className="w-full h-auto object-cover"
                       />
@@ -156,6 +165,56 @@ function App() {
                       <div className="h-48 flex items-center justify-center text-gray-400">No Chart Available</div>
                     )}
                   </motion.div>
+
+                  {/* Fundamental Summary */}
+                  {reportDetail.data?.fundamental && (
+                    <motion.div
+                      className="bg-white p-7 rounded-[32px] shadow-sm border border-gray-100"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.15 }}
+                    >
+                      <div className="flex justify-between items-center mb-6">
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Fundamental Analysis</h3>
+                          <p className="text-sm text-gray-400 font-medium">Detailed financial health check</p>
+                        </div>
+                        <div className="flex flex-col items-end">
+                          <div className="text-3xl font-black text-toss-blue">
+                            {reportDetail.data.fundamental.checked_count}
+                            <span className="text-lg text-gray-300 ml-1">/ {reportDetail.data.fundamental.total_items}</span>
+                          </div>
+                          <div className="text-[10px] font-bold text-toss-blue bg-blue-50 px-2 py-0.5 rounded-full uppercase tracking-tight mt-1">
+                            Items Passed
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-1 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar -mr-2">
+                        {Object.entries(reportDetail.data.fundamental.checklist_details || {}).map(([item, passed]) => (
+                          <div
+                            key={item}
+                            className={`flex justify-between items-center p-3.5 rounded-2xl transition-colors ${passed ? 'bg-white hover:bg-green-50/30' : 'bg-white hover:bg-red-50/30'
+                              }`}
+                          >
+                            <span className="text-[15px] font-medium text-gray-600 leading-tight pr-4">{item}</span>
+                            <div className={`p-1 rounded-full ${passed ? 'text-green-500 bg-green-50' : 'text-red-400 bg-red-50'}`}>
+                              {passed ? (
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                  <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                              ) : (
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
 
                   {/* Fundamental Grid */}
                   {reportDetail.data?.fundamental && (
@@ -165,8 +224,8 @@ function App() {
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <MetricCard label="PER" value={reportDetail.data.fundamental.metrics_fetched?.per} />
-                      <MetricCard label="PBR" value={reportDetail.data.fundamental.metrics_fetched?.pbr} />
+                      <MetricCard label="PER" value={reportDetail.data.fundamental.metrics_fetched?.per} unit="x" />
+                      <MetricCard label="PBR" value={reportDetail.data.fundamental.metrics_fetched?.pbr} unit="x" />
                       <MetricCard label="ROE" value={reportDetail.data.fundamental.metrics_fetched?.roe} />
                       <MetricCard label="Market Cap" value={reportDetail.data.fundamental.metrics_fetched?.market_cap} colSpan={2} />
                     </motion.div>
@@ -175,13 +234,14 @@ function App() {
                   {/* Recommendations */}
                   {reportDetail.data?.fundamental?.action_guidance && (
                     <motion.div
-                      className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100"
+                      className="bg-gradient-to-br from-toss-blue to-blue-600 p-7 rounded-[32px] shadow-lg shadow-blue-200"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Recommendation</h3>
-                      <div className="text-2xl font-bold text-gray-900 flex items-center">
+                      <h3 className="text-xs font-bold text-blue-100 uppercase tracking-[0.2em] mb-3 opacity-80">AI Analysis Insight</h3>
+                      <div className="text-2xl font-extrabold text-white flex items-center">
+                        <TrendingUp size={24} className="mr-3 text-blue-200" />
                         {reportDetail.data.fundamental.action_guidance}
                       </div>
                     </motion.div>
@@ -189,18 +249,49 @@ function App() {
 
                   {/* News Section */}
                   {reportDetail.data?.news?.news && (
-                    <motion.div className="space-y-4"
+                    <motion.div className="space-y-5"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.4 }}
                     >
-                      <h3 className="text-lg font-bold text-gray-900 px-2">Recent News</h3>
-                      {reportDetail.data.news.news.slice(0, 3).map((news, i) => (
-                        <a key={i} href={news.link} target="_blank" rel="noopener noreferrer" className="block bg-white p-5 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                          <div className="font-semibold text-gray-800 mb-1 line-clamp-2">{news.title}</div>
-                          <div className="text-xs text-gray-400">{news.date}</div>
-                        </a>
-                      ))}
+                      <div className="flex justify-between items-center px-2">
+                        <h3 className="text-xl font-bold text-gray-900">Recent Stories</h3>
+                        <span className="text-sm font-semibold text-toss-blue cursor-pointer hover:opacity-75">See all</span>
+                      </div>
+                      <div className="space-y-3">
+                        {reportDetail.data.news.news.map((news, i) => (
+                          <div key={i} className="bg-white p-6 rounded-[28px] shadow-sm border border-gray-50 hover:border-blue-50 transition-all group">
+                            <div className="flex flex-col">
+                              <div className="mb-3">
+                                {news.sentiment && news.sentiment !== 'Unknown' && (
+                                  <span className={`text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider ${news.sentiment === 'Positive' ? 'bg-green-50 text-green-600' :
+                                    news.sentiment === 'Negative' ? 'bg-red-50 text-red-600' :
+                                      'bg-gray-50 text-gray-500'
+                                    }`}>
+                                    {news.sentiment}
+                                  </span>
+                                )}
+                              </div>
+                              <a
+                                href={news.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-bold text-[17px] text-gray-800 leading-snug hover:text-toss-blue transition-colors mb-4 block group-hover:underline decoration-2 underline-offset-4 decoration-blue-100"
+                              >
+                                {news.title}
+                              </a>
+                              <div className="flex items-center text-xs font-semibold text-gray-400 space-x-3">
+                                <span className="flex items-center">
+                                  <Calendar size={12} className="mr-1" />
+                                  {news.date}
+                                </span>
+                                <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
+                                <span className="uppercase tracking-tighter">Finance News</span>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </motion.div>
                   )}
                 </>
@@ -213,11 +304,14 @@ function App() {
   );
 }
 
-function MetricCard({ label, value, colSpan }) {
+function MetricCard({ label, value, colSpan, unit }) {
   return (
-    <div className={`bg-white p-5 rounded-3xl shadow-sm border border-gray-100 ${colSpan ? 'col-span-2' : ''}`}>
-      <div className="text-sm text-gray-400 mb-1 font-medium">{label}</div>
-      <div className="text-xl font-bold text-gray-800">{value || '-'}</div>
+    <div className={`bg-white p-6 rounded-[28px] shadow-sm border border-gray-100 ${colSpan ? 'col-span-2' : ''} hover:shadow-md transition-shadow`}>
+      <div className="text-sm text-gray-400 mb-2 font-bold uppercase tracking-wider">{label}</div>
+      <div className="text-2xl font-black text-gray-900">
+        {value || '-'}
+        {value && unit && <span className="text-sm text-gray-300 ml-0.5 font-bold">{unit}</span>}
+      </div>
     </div>
   );
 }

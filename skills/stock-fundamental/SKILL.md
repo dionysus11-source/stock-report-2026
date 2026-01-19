@@ -38,6 +38,7 @@ The Agent MUST output the result in this exact JSON structure:
 ```json
 {
     "code": "{Stock Code}",
+    "name": "{Stock Name}",
     "analysis_date": "{YYYY-MM-DD}",
     "metrics_fetched": {
         "market_cap": "e.g., 400조원",

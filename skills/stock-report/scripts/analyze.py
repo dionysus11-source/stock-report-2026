@@ -73,6 +73,7 @@ def main():
         "date": date_str,
         "timestamp": datetime.now().isoformat(),
         "summary": {
+            "name": fundamental_data.get("name") if fundamental_data else None,
             "has_fundamental": fundamental_data is not None,
             "has_technical": technical_data is not None,
             "has_news": news_data is not None,
