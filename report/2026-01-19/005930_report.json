@@ -1,0 +1,35 @@
+{
+    "date": "2026-01-19 15:08:43",
+    "code": "005930",
+    "fundamental": {},
+    "technical": {
+        "error": "Traceback (most recent call last):\n  File \"C:\\Users\\dionysus11\\Documents\\Github\\stock-analyzer-2026\\skills\\stock-technical\\scripts\\analyze.py\", line 77, in <module>\n    main()\n  File \"C:\\Users\\dionysus11\\Documents\\Github\\stock-analyzer-2026\\skills\\stock-technical\\scripts\\analyze.py\", line 74, in main\n    print(json.dumps(result, ensure_ascii=False, indent=4))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py\", line 202, in encode\n    chunks = list(chunks)\n             ^^^^^^^^^^^^\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py\", line 432, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py\", line 439, in _iterencode\n    o = _default(o)\n        ^^^^^^^^^^^\n  File \"C:\\Users\\dionysus11\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\encoder.py\", line 180, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type bool is not JSON serializable\n"
+    },
+    "news": [
+        {
+            "title": "[005930] Market Analysis: Upward Trend Expected",
+            "sentiment": "Positive",
+            "link": "http://example.com/news/1"
+        },
+        {
+            "title": "[005930] Q3 Earnings Report Released",
+            "sentiment": "Neutral",
+            "link": "http://example.com/news/2"
+        },
+        {
+            "title": "Global Economic Slowdown Concerns",
+            "sentiment": "Negative",
+            "link": "http://example.com/news/3"
+        },
+        {
+            "title": "[005930] New Product Launch Success",
+            "sentiment": "Positive",
+            "link": "http://example.com/news/4"
+        },
+        {
+            "title": "Sector Outlook for 2026",
+            "sentiment": "Neutral",
+            "link": "http://example.com/news/5"
+        }
+    ]
+}
