@@ -1,13 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-toss-bg text-gray-900;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+:root {
+  --toss-blue: #3182f6;
+  --toss-blue-dark: #1b64da;
+  --toss-bg: #f2f4f6;
+  --toss-gray-100: #f9fafb;
+  --toss-gray-200: #e5e8eb;
+  --toss-gray-600: #4e5968;
+  --toss-gray-900: #191f28;
 }
 
-/* Custom utilities if needed */
-.card {
-  @apply bg-white rounded-3xl shadow-lg p-6;
+body {
+  @apply bg-toss-bg text-toss-gray-900;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar for premium feel */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d6db;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b0b8c1;
+}
+
+.luxury-shadow {
+  shadow-color: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
 }
