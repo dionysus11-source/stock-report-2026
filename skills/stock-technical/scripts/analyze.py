@@ -3,6 +3,8 @@ import json
 import sys
 import FinanceDataReader as fdr
 import pandas as pd
+import os
+import datetime
 
 def analyze_technical(usage_code):
     """
@@ -31,9 +33,9 @@ def analyze_technical(usage_code):
         prev_ma20 = float(prev['MA20']) if not pd.isna(prev['MA20']) else 0
         
         daily_checklist = {
-            "price_above_ma20": price > ma20,
-            "golden_cross": (ma5 > ma20) and (prev_ma5 <= prev_ma20),
-            "is_red_candle": latest['Close'] > latest['Open']
+            "price_above_ma20": bool(price > ma20),
+            "golden_cross": bool((ma5 > ma20) and (prev_ma5 <= prev_ma20)),
+            "is_red_candle": bool(latest['Close'] > latest['Open'])
         }
         
         # 1. Weekly Analysis (Approximate by resampling)
@@ -52,8 +54,8 @@ def analyze_technical(usage_code):
                 ma20_slope_up = weekly_ma20 >= prev_weekly_ma20
             
             weekly_checklist = {
-                "price_above_ma20": latest_weekly['Close'] > weekly_ma20,
-                "ma20_slope_up": ma20_slope_up
+                "price_above_ma20": bool(latest_weekly['Close'] > weekly_ma20),
+                "ma20_slope_up": bool(ma20_slope_up)
             }
         
         return {
@@ -71,6 +73,20 @@ def main():
     args = parser.parse_args()
     
     result = analyze_technical(args.code)
+    
+    # Get current date
+    today = datetime.date.today().strftime("%Y-%m-%d")
+    
+    # Ensure report directory exists
+    report_dir = f"report/{today}"
+    os.makedirs(report_dir, exist_ok=True)
+    
+    # Save to file
+    filename = f"{report_dir}/{args.code}_technical.json"
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(result, f, ensure_ascii=False, indent=4)
+        
+    print(f"Analysis saved to {filename}")
     print(json.dumps(result, ensure_ascii=False, indent=4))
 
 if __name__ == "__main__":
