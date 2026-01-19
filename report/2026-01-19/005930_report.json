@@ -1,0 +1,102 @@
+{
+    "stock_code": "005930",
+    "date": "2026-01-19",
+    "timestamp": "2026-01-19T18:08:04.660943",
+    "summary": {
+        "has_fundamental": true,
+        "has_technical": true,
+        "has_news": true,
+        "chart_count": 1
+    },
+    "data": {
+        "fundamental": {
+            "code": "005930",
+            "analysis_date": "2026-01-19",
+            "metrics_fetched": {
+                "market_cap": "420조원",
+                "per": "15.2",
+                "pbr": "1.4",
+                "roe": "9.8%",
+                "date_used": "2025.12 (E)"
+            },
+            "checklist_details": {
+                "시가총액 3,000억 원 이상": true,
+                "증거금률 40% 이하": true,
+                "52주 최저가 대비율 10% 이하": false,
+                "52주 최고가 대비율 30% 이상": false,
+                "PER 업종 평균 이하 (또는 10 이하)": false,
+                "PBR 2 이하": true,
+                "PSR 5 이하": true,
+                "PCR 10 이하": true,
+                "PEG 1 이하": false,
+                "ROE 5% 이상": true,
+                "ROA 3% 이상": true,
+                "영업이익률 5% 이상": true,
+                "순이익률 3% 이상": true,
+                "매출액 증가율 1% 이상": true,
+                "순이익 증가율 1% 이상": true,
+                "부채 비율 100% 이하": true,
+                "유동 비율 200% 이상": true,
+                "유보율 200% 이상": true,
+                "배당수익률 2% 이상": true,
+                "외국인 지분율 30% 이상": true
+            },
+            "checked_count": 16,
+            "total_items": 20,
+            "score_label": "Excellent",
+            "action_guidance": "매수 추천"
+        },
+        "technical": {
+            "code": "005930",
+            "daily": {
+                "price_above_ma20": true,
+                "golden_cross": false,
+                "is_red_candle": true
+            },
+            "weekly": {
+                "price_above_ma20": true,
+                "ma20_slope_up": true
+            },
+            "current_price": 149300
+        },
+        "news": {
+            "code": "005930",
+            "news": [
+                {
+                    "title": "홍라희, 삼성전자 주식 1천500만주 처분…약 2조원 규모 - 연합뉴스",
+                    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE51OVpyUGFSWFVJdVU2MWxLb2NVZjdvYW1qTl9NSlpTa0owRVZrOXBNYzBkaHJfaVN0MHROcTROdEFfZGVlY1VNbi10VW41YTVhczRrZ1c4c3ZsSTDSAWBBVV95cUxPTjh0ellvTFZGbW16cTVYX2RqZUdvY3ZGMTgydFhjWjJnaDJTME5Ed3VlaGxvTTFRZ2RRT3BPZzVIX3VWbE1SaVhMZDljd2lHNXBTeDdYc3ZuRGpqODVsb0E?oc=5",
+                    "date": "2026.01.18 09:26",
+                    "sentiment": "Unknown"
+                },
+                {
+                    "title": "[속보]삼성전자, 장중 15만원 터치 - 뉴시스",
+                    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5FNGlvWDBVWnNtSW1qQktBQ3JFUFFqMVc0Y3VZMnlmSjBmeWhaMkFzYkNkdk1CTlRva1pqa3gxZW1JeDdlbEc3QnV0TTZyS1JYU1J0SW9teEpZbTVKWEZTM9IBeEFVX3lxTE50clZLcUNneE43NlBlbTJURk1lb3dUMU5OT3o5Z2xPblR5QlYxb2c1YVZxdHRVZnJJbHZBNmRJNmNYWE9xSTBMYU1ac2lSc1RBdXpTRlQ0c0gyVlg2N1k5SFpDa0t2NFhDYVBXVHVxZWc2UWxpWllSMw?oc=5",
+                    "date": "2026.01.19 05:58",
+                    "sentiment": "Unknown"
+                },
+                {
+                    "title": "삼성전자 파운드리 상반기 가동률 60%대…점진적 상승세 - 지디넷코리아",
+                    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE91VmlTWEExUFZvT1hfVUtTXzVNUlpGcXJvMDZCd2hlYlh4V1RTdE1hT2ZFVWZ4M3h4M1k4aFc5SWt3T2xvZS1yMThxOTE2MkJHNk9VRmhR?oc=5",
+                    "date": "2026.01.19 05:26",
+                    "sentiment": "Unknown"
+                },
+                {
+                    "title": "투자은행 \"퀄컴 AMD '삼성전자 파운드리' 진지하게 고려\", TSMC 3나노 생산 한계에 대응 - 비즈니스포스트",
+                    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE55TDNIbWtIbDhSVkd2RFh6Y19MMUM3QmRKYnBSeHNUTXEwZFp4QnFGT3BoWDlvTVRCX0pqSEE1UFRwQ29oVzg0YndyZlBUZVlwR0IyZlZYdVJOMFM1TFhKNExBN25FY0l4eTZ3UFlCeTJONTg?oc=5",
+                    "date": "2026.01.19 06:41",
+                    "sentiment": "Unknown"
+                },
+                {
+                    "title": "15만원 터치 삼성전자…AI 반도체 업고 ‘20만전자’ 노린다 - v.daum.net",
+                    "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9CUDZkbk5jQVRnQUNUbDhoWXYtdkJGQ010VmRIN05XbmhDTzVtTm1BRFZ4QzM4SnlPUXpZcjRTc1pPX01GMHo2d01VREU1aWM?oc=5",
+                    "date": "2026.01.19 08:17",
+                    "sentiment": "Unknown"
+                }
+            ],
+            "fetched_at": "2026-01-19 18:06:40"
+        },
+        "images": [
+            "images\\A005930_chart.png"
+        ]
+    }
+}

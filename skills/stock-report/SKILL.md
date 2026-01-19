@@ -1,26 +1,36 @@
 ---
 name: stock-report
-description: Aggregates analysis results and serves a web dashboard.
+description: Orchestrates stock analysis by running sub-skills (capture, fundamental, news, technical) and generating a consolidated report.
 ---
 
-# Stock Report
+# Stock Report Skill
 
-This skill aggregates results from fundamental, technical, capture, and news skills, generating a comprehensive JSON report and serving it via a web dashboard.
+This skill acts as an orchestrator to generate a comprehensive stock analysis report. It does not perform analysis itself but coordinates other skills.
 
 ## Usage
 
-### 1. Generate Report
-Runs all analysis skills for a stock and saves the result to `report/YYYY-MM-DD/`.
+When a user asks for a stock analysis (e.g., "Analyze Samsung Electronics", "Report for TSLA"), use this skill.
+
+## Steps
+
+1.  **Identify Stock Code**: Determine the stock ticker/code from the user's request.
+2.  **Run Sub-Skills**: Execute the following skills for the target stock:
+    *   `stock-capture`: To get chart screenshots.
+    *   `stock-fundamental`: To get financial data (PBR, PER, ROE, etc.).
+    *   `stock-news`: To get recent news articles.
+    *   `stock-technical`: To get technical indicators (MA, RSI, etc.).
+3.  **Aggregate Results**: Run the `scripts/analyze.py` script. This script will:
+    *   Collect outputs from the sub-skills (which should be in `report/YYYY-MM-DD/`).
+    *   Generate a `report.json` file in the same report directory.
+    *   This JSON file is the final output for the web interface.
+4.  **Confirm**: Inform the user that the report has been generated and provide the path to the `report.json` or the web view link.
+
+## Script Usage
 
 ```bash
-python skills/stock-report/scripts/generate_json.py --code 005930
+python skills/stock-report/scripts/analyze.py --code <STOCK_CODE> [--date <YYYY-MM-DD>]
 ```
 
-### 2. View Dashboard
-Starts a local web server to view the reports.
+## Output
 
-```bash
-python skills/stock-report/scripts/server.py
-```
-
-Access at `http://localhost:8000`.
+-   `report/<DATE>/<CODE>_report.json`: Consolidated report data.

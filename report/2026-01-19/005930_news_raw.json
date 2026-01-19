@@ -3,28 +3,34 @@
     "news": [
         {
             "title": "홍라희, 삼성전자 주식 1천500만주 처분…약 2조원 규모 - 연합뉴스",
-            "link": "https://news.google.com/rss/articles/...",
-            "date": "2026.01.19 14:00",
-            "sentiment": "Negative"
+            "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE51OVpyUGFSWFVJdVU2MWxLb2NVZjdvYW1qTl9NSlpTa0owRVZrOXBNYzBkaHJfaVN0MHROcTROdEFfZGVlY1VNbi10VW41YTVhczRrZ1c4c3ZsSTDSAWBBVV95cUxPTjh0ellvTFZGbW16cTVYX2RqZUdvY3ZGMTgydFhjWjJnaDJTME5Ed3VlaGxvTTFRZ2RRT3BPZzVIX3VWbE1SaVhMZDljd2lHNXBTeDdYc3ZuRGpqODVsb0E?oc=5",
+            "date": "2026.01.18 09:26",
+            "sentiment": "Unknown"
         },
         {
-            "title": "삼성전자, '갤럭시S26' 언팩…AI 기능 대폭 강화 - 지디넷코리아",
-            "link": "https://news.google.com/rss/articles/...",
-            "date": "2026.01.19 11:00",
-            "sentiment": "Positive"
+            "title": "[속보]삼성전자, 장중 15만원 터치 - 뉴시스",
+            "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5FNGlvWDBVWnNtSW1qQktBQ3JFUFFqMVc0Y3VZMnlmSjBmeWhaMkFzYkNkdk1CTlRva1pqa3gxZW1JeDdlbEc3QnV0TTZyS1JYU1J0SW9teEpZbTVKWEZTM9IBeEFVX3lxTE50clZLcUNneE43NlBlbTJURk1lb3dUMU5OT3o5Z2xPblR5QlYxb2c1YVZxdHRVZnJJbHZBNmRJNmNYWE9xSTBMYU1ac2lSc1RBdXpTRlQ0c0gyVlg2N1k5SFpDa0t2NFhDYVBXVHVxZWc2UWxpWllSMw?oc=5",
+            "date": "2026.01.19 05:58",
+            "sentiment": "Unknown"
         },
         {
-            "title": "삼성전자, 지난해 영업이익 15조원…전년비 23% 증가 - 조선비즈",
-            "link": "https://news.google.com/rss/articles/...",
-            "date": "2026.01.19 09:30",
-            "sentiment": "Positive"
+            "title": "삼성전자 파운드리 상반기 가동률 60%대…점진적 상승세 - 지디넷코리아",
+            "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE91VmlTWEExUFZvT1hfVUtTXzVNUlpGcXJvMDZCd2hlYlh4V1RTdE1hT2ZFVWZ4M3h4M1k4aFc5SWt3T2xvZS1yMThxOTE2MkJHNk9VRmhR?oc=5",
+            "date": "2026.01.19 05:26",
+            "sentiment": "Unknown"
         },
         {
-            "title": "코스피 상승 출발…삼성전자·SK하이닉스 강세 - 뉴시스",
-            "link": "https://news.google.com/rss/articles/...",
-            "date": "2026.01.19 09:05",
-            "sentiment": "Positive"
+            "title": "투자은행 \"퀄컴 AMD '삼성전자 파운드리' 진지하게 고려\", TSMC 3나노 생산 한계에 대응 - 비즈니스포스트",
+            "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE55TDNIbWtIbDhSVkd2RFh6Y19MMUM3QmRKYnBSeHNUTXEwZFp4QnFGT3BoWDlvTVRCX0pqSEE1UFRwQ29oVzg0YndyZlBUZVlwR0IyZlZYdVJOMFM1TFhKNExBN25FY0l4eTZ3UFlCeTJONTg?oc=5",
+            "date": "2026.01.19 06:41",
+            "sentiment": "Unknown"
+        },
+        {
+            "title": "15만원 터치 삼성전자…AI 반도체 업고 ‘20만전자’ 노린다 - v.daum.net",
+            "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9CUDZkbk5jQVRnQUNUbDhoWXYtdkJGQ010VmRIN05XbmhDTzVtTm1BRFZ4QzM4SnlPUXpZcjRTc1pPX01GMHo2d01VREU1aWM?oc=5",
+            "date": "2026.01.19 08:17",
+            "sentiment": "Unknown"
         }
     ],
-    "fetched_at": "2026-01-19 15:42:21"
+    "fetched_at": "2026-01-19 18:06:40"
 }
