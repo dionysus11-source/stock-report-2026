@@ -11,6 +11,11 @@ TBD - created by archiving change add-stock-report-webapp. Update Purpose after 
 - **THEN** 시스템은 사이드바를 통해 분석 날짜를 선택하고 해당 날짜의 종목 리스트를 탐색할 수 있는 인터페이스를 제공한다 (SHALL).
 - **AND** 특정 종목을 선택하면, 중앙 대시보드 영역에 해당 종목의 요약 정보가 표시된다.
 
+#### Scenario: Navigate Reports on Mobile
+- **WHEN** 사용자가 모바일 기기(작은 화면)로 접속하면
+- **THEN** 시스템은 사이드바를 기본적으로 숨기고, 상단 헤더에 사이드바를 열 수 있는 토글 버튼(Trigger)을 제공한다 (SHALL).
+- **AND** 토글 버튼을 클릭하면, 사이드바가 오버레이 형태로 나타나 분석 날짜와 종목 리스트를 탐색할 수 있게 한다.
+
 #### Scenario: View Structured Analysis Data
 - **WHEN** 사용자가 특정 종목의 상세 정보를 조회하면
 - **THEN** 시스템은 정보를 탭(Tabs) 또는 섹션으로 구분하여 (기본 분석, 기술 분석, 뉴스 섹션) 제공하여 정보 과부하를 방지한다 (SHALL).
