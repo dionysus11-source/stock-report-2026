@@ -1,0 +1,104 @@
+{
+    "stock_code": "478340",
+    "date": "2026-01-20",
+    "timestamp": "2026-01-20T11:28:32.203933",
+    "summary": {
+        "name": "나라스페이스테크놀로지",
+        "has_fundamental": true,
+        "has_technical": true,
+        "has_news": true,
+        "chart_count": 1
+    },
+    "data": {
+        "fundamental": {
+            "code": "478340",
+            "name": "나라스페이스테크놀로지",
+            "analysis_date": "2026-01-20",
+            "metrics_fetched": {
+                "market_cap": "3,552억 원",
+                "per": "N/A (적자)",
+                "pbr": "16.64",
+                "roe": "N/A (잠식)",
+                "date_used": "2024.12 (IFRS)"
+            },
+            "checklist_details": {
+                "시가총액 3,000억 원 이상": true,
+                "증거금률 40% 이하": false,
+                "52주 최저가 대비율 10% 이하": false,
+                "52주 최고가 대비율 30% 이상": false,
+                "PER 업종 평균 이하 (또는 10 이하)": false,
+                "PBR 2 이하": false,
+                "PSR 5 이하": false,
+                "PCR 10 이하": false,
+                "PEG 1 이하": false,
+                "ROE 5% 이상": false,
+                "ROA 3% 이상": false,
+                "영업이익률 5% 이상": false,
+                "순이익률 3% 이상": false,
+                "매출액 증가율 1% 이상": false,
+                "순이익 증가율 1% 이상": false,
+                "부채 비율 100% 이하": false,
+                "유동 비율 200% 이상": false,
+                "유보율 200% 이상": false,
+                "배당수익률 2% 이상": false,
+                "외국인 지분율 30% 이상": false
+            },
+            "checked_count": 1,
+            "total_items": 20,
+            "score_label": "Weak",
+            "action_guidance": "주의 필요"
+        },
+        "technical": {
+            "code": "478340",
+            "daily": {
+                "price_above_ma20": true,
+                "golden_cross": true,
+                "is_red_candle": true
+            },
+            "weekly": {
+                "price_above_ma20": true,
+                "ma20_slope_up": true
+            },
+            "current_price": 40750
+        },
+        "news": {
+            "code": "478340",
+            "news": [
+                {
+                    "title": "나라스페이스, 우주반도체 검증위성 개발사업 수행기관 선정 - 연합뉴스",
+                    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE44Z1RYcGhVdXE4TGhtdWVlN0ZGeDB2TnI3dmZxNjlCcTlRVjZ3aFFhQ3EwSks5UDdGUllYWDdoMGswOU5FNEdkbXlYTHI5QkY2cGstRWVFT3lJRlXSAWBBVV95cUxPM2xTMmFBT2luUDhZbG9pSnBjQzRNY2JOcGh1bEx2Zk9BQzJCc1NScGZqWEZxblNieDBoR05weDNQZUpyak5GLW85aFB6OUhzTlFZckdCeS1xcFFLOFc3LUo?oc=5",
+                    "date": "2026.01.20 01:45",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "나라스페이스, 우주 반도체 검증위성 개발 사업 수행기관 선정 - 뉴시스",
+                    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5QeXlpQ2ZCLVpvTmNRSjFFSmpRLWZ6Zkdqd1NMYVJtcWpuNi1hcnlISk5xWUhURWhwZUFYNnI0Y2IzZ0lTRE4xV0tEUmpMM0xLbHlJWlRQYTE3eXB5akVsTtIBeEFVX3lxTFBOcl9qRF9UbFFJQmpmUDg2QTEzWFlyUktDYUNRbHVZd3J6QTdYN3VFbVh4c2oyNVdOQU5HNV9pc24xblFGVjVrOEF5WjVXamhMQndBd2RzSUpaRDB0ZHVEc1BEZm1vYmhpcUdkR0cxV3FkRUx0dmNfVg?oc=5",
+                    "date": "2026.01.20 01:56",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "나라스페이스테크놀로지, 22억 규모 우주반도체 검증 위성 설계용역 우선협상대상자 선정 - 마켓인",
+                    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1fblFSa1NxLUdNd2J4UC1DTzhNUDJHaGMwSDYzY21UNS1ERzR3dVVBZExueVUxMGJiYmlGa1EtaXVndm5pRU5rTG9rbGhIOG1BVUxoX3hJdHlfQmFqLVhINlRGeEk5Z2NmYlpXRFhqUWd1NWc?oc=5",
+                    "date": "2026.01.20 01:48",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "나라스페이스테크놀로지, +19.74% VI 발동 - 조선비즈 - Chosunbiz",
+                    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPMDhtb0RmNk9vazZxZXRibzJFNmJtUzJCZmtZZm1QR25od2lCUS1tZUtCdEp3ZmhkSjZWa3RmUjZFeFRpU0haQnB1NGRBQkt4aV90cGtPZExUWklLYkViSnpUYjNLa2NyT3FtNFdWZHZzY01CWlJFeUZJN0FiX1BCRktNTdIBlwFBVV95cUxOUXJtRTZuUndFMmRmbllXWHR4QUpxWVVqVEpiSzlKbHBQWHJURVluREl5ZDNmNk54NjY5YTEtMDlITkpmUnVPaE5pdWdvbXVaQ0UwSzRFX3FaRC1yVkpnVjkxTjZCRmJ6TVRCM1liSlVMX2ZNbXBVSFZ6eWNDeHB5bmNQZWxWdTh5Mndxd1JfNFR1N3BnSV9F?oc=5",
+                    "date": "2026.01.19 04:27",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "나라스페이스테크놀로지, 우주반도체 검증 탑재체 개발 우선협상대상자 선정 - 네이트",
+                    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBfV2dJMVhzNVV1aUprNjhwSzFXN1o3dkN0NHA0U1FwZ25YSUtJSG5ZOTA1ZExBSnVWVFRKamxYUGd5N1BLRG5uMXdpMTdkY2QyMFZr?oc=5",
+                    "date": "2026.01.20 01:46",
+                    "sentiment": "Positive"
+                }
+            ],
+            "fetched_at": "2026-01-20 11:27:39"
+        },
+        "images": [
+            "images\\A478340_chart.png"
+        ]
+    }
+}
