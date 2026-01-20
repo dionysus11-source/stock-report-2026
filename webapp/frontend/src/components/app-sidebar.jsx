@@ -65,7 +65,7 @@ export function AppSidebar() {
                     <select
                         value={selectedDate || ""}
                         onChange={handleDateChange}
-                        className="w-full appearance-none rounded-xl border-none bg-gray-100/50 py-2.5 pl-10 pr-10 text-sm font-semibold text-gray-900 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+                        className="w-full appearance-none rounded-xl border-none bg-gray-100 py-2.5 pl-10 pr-10 text-sm font-semibold text-gray-900 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
                     >
                         {!selectedDate && <option value="">Select Date</option>}
                         {dates?.map((d) => (
@@ -99,7 +99,7 @@ export function AppSidebar() {
                                             className={cn(
                                                 "h-14 rounded-2xl transition-all duration-300 group px-4",
                                                 selectedCode === stock.stock_code
-                                                    ? "bg-blue-600/5 text-blue-700 shadow-sm ring-1 ring-blue-100/50"
+                                                    ? "bg-blue-50 text-blue-700 shadow-sm ring-1 ring-blue-100"
                                                     : "hover:bg-gray-50 text-gray-600"
                                             )}
                                             onClick={() => handleStockClick(stock.stock_code)}
