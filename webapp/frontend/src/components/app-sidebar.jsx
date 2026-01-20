@@ -13,6 +13,7 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    useSidebar,
 } from "@/components/ui/sidebar";
 import { useRouter, useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -30,11 +31,22 @@ export function AppSidebar() {
         queryFn: ReportClient.getDates,
     });
 
+    const { isMobile, setOpenMobile } = useSidebar();
     const { data: stocks, isLoading: stocksLoading } = useQuery({
         queryKey: ['reports', selectedDate],
         queryFn: () => ReportClient.getReportsByDate(selectedDate),
         enabled: !!selectedDate,
     });
+
+    const handleDateChange = (e) => {
+        router.push(`/reports/${e.target.value}`);
+        if (isMobile) setOpenMobile(false);
+    };
+
+    const handleStockClick = (code) => {
+        router.push(`/reports/${selectedDate}/${code}`);
+        if (isMobile) setOpenMobile(false);
+    };
 
     return (
         <Sidebar variant="inset" className="border-r border-gray-100 bg-white/50 backdrop-blur-xl">
@@ -52,7 +64,7 @@ export function AppSidebar() {
                     <ClientOnly><Calendar className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-blue-500 opacity-60 transition-opacity group-focus-within:opacity-100" /></ClientOnly>
                     <select
                         value={selectedDate || ""}
-                        onChange={(e) => router.push(`/reports/${e.target.value}`)}
+                        onChange={handleDateChange}
                         className="w-full appearance-none rounded-xl border-none bg-gray-100/50 py-2.5 pl-10 pr-10 text-sm font-semibold text-gray-900 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
                     >
                         {!selectedDate && <option value="">Select Date</option>}
@@ -90,7 +102,7 @@ export function AppSidebar() {
                                                     ? "bg-blue-600/5 text-blue-700 shadow-sm ring-1 ring-blue-100/50"
                                                     : "hover:bg-gray-50 text-gray-600"
                                             )}
-                                            onClick={() => router.push(`/reports/${selectedDate}/${stock.stock_code}`)}
+                                            onClick={() => handleStockClick(stock.stock_code)}
                                         >
                                             <div className="flex w-full items-center justify-between">
                                                 <div className="flex flex-col gap-0.5 min-w-0">
