@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { ReportClient } from "@/lib/api";
 import { TrendingUp } from "lucide-react";
+import ClientOnly from "@/components/utils/client-only";
 
 export default function HomePage() {
   const router = useRouter();
@@ -25,7 +26,9 @@ export default function HomePage() {
       <div className="flex flex-col items-center gap-6">
         <div className="relative">
           <div className="h-20 w-20 rounded-3xl bg-blue-600 flex items-center justify-center text-white shadow-2xl shadow-blue-200 animate-pulse">
-            <TrendingUp size={40} />
+            <ClientOnly>
+              <TrendingUp size={40} />
+            </ClientOnly>
           </div>
           <div className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-blue-100 border-4 border-white" />
         </div>

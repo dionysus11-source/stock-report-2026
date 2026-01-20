@@ -17,6 +17,7 @@ import {
 import { useRouter, useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
+import ClientOnly from "@/components/utils/client-only";
 
 export function AppSidebar() {
     const router = useRouter();
@@ -40,7 +41,7 @@ export function AppSidebar() {
             <SidebarHeader className="p-4">
                 <div className="flex items-center gap-3 px-2 mb-4">
                     <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-200">
-                        <TrendingUp size={20} />
+                        <ClientOnly><TrendingUp size={20} /></ClientOnly>
                     </div>
                     <span className="text-xl font-bold tracking-tight text-gray-900">
                         Stock <span className="text-blue-600">Insight</span>
@@ -48,7 +49,7 @@ export function AppSidebar() {
                 </div>
 
                 <div className="relative group px-2">
-                    <Calendar className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-blue-500 opacity-60 transition-opacity group-focus-within:opacity-100" />
+                    <ClientOnly><Calendar className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-blue-500 opacity-60 transition-opacity group-focus-within:opacity-100" /></ClientOnly>
                     <select
                         value={selectedDate || ""}
                         onChange={(e) => router.push(`/reports/${e.target.value}`)}
@@ -102,7 +103,7 @@ export function AppSidebar() {
                                                 </div>
                                                 {selectedCode === stock.stock_code ? (
                                                     <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
-                                                        <ChevronRight size={14} strokeWidth={3} />
+                                                        <ClientOnly><ChevronRight size={14} strokeWidth={3} /></ClientOnly>
                                                     </div>
                                                 ) : (
                                                     <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">

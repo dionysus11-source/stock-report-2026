@@ -20,6 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import ClientOnly from "@/components/utils/client-only";
 
 export default function ReportDetailPage() {
     const { date, code } = useParams();
@@ -91,22 +92,22 @@ export default function ReportDetailPage() {
             <Tabs defaultValue="overview" className="w-full space-y-8">
                 <TabsList className="bg-white/50 backdrop-blur-md p-1.5 rounded-2xl border border-gray-100 shadow-sm w-full md:w-auto h-auto flex overflow-x-auto scrollbar-hide">
                     <TabsTrigger value="overview" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
-                        <TrendingUp size={16} className="mr-2" /> Overview
+                        <ClientOnly><TrendingUp size={16} className="mr-2" /></ClientOnly> Overview
                     </TabsTrigger>
                     <TabsTrigger value="fundamental" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
-                        <ShieldCheck size={16} className="mr-2" /> Fundamental
+                        <ClientOnly><ShieldCheck size={16} className="mr-2" /></ClientOnly> Fundamental
                     </TabsTrigger>
                     <TabsTrigger value="technical" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
-                        <BarChart3 size={16} className="mr-2" /> Technical
+                        <ClientOnly><BarChart3 size={16} className="mr-2" /></ClientOnly> Technical
                     </TabsTrigger>
                     <TabsTrigger value="news" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
-                        <Newspaper size={16} className="mr-2" /> News Pulse
+                        <ClientOnly><Newspaper size={16} className="mr-2" /></ClientOnly> News Pulse
                     </TabsTrigger>
                 </TabsList>
 
                 <AnimatePresence mode="wait">
                     {/* Overview Tab */}
-                    <TabsContent value="overview">
+                    <TabsContent value="overview" key="overview">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -158,7 +159,7 @@ export default function ReportDetailPage() {
                     </TabsContent>
 
                     {/* Fundamental Tab */}
-                    <TabsContent value="fundamental">
+                    <TabsContent value="fundamental" key="fundamental">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -212,7 +213,7 @@ export default function ReportDetailPage() {
                     </TabsContent>
 
                     {/* Technical Tab */}
-                    <TabsContent value="technical">
+                    <TabsContent value="technical" key="technical">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -255,7 +256,7 @@ export default function ReportDetailPage() {
                     </TabsContent>
 
                     {/* News Tab */}
-                    <TabsContent value="news">
+                    <TabsContent value="news" key="news">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
