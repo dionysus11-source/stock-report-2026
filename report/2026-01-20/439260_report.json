@@ -1,0 +1,104 @@
+{
+    "stock_code": "439260",
+    "date": "2026-01-20",
+    "timestamp": "2026-01-20T14:26:20.205925",
+    "summary": {
+        "name": "대한조선",
+        "has_fundamental": true,
+        "has_technical": true,
+        "has_news": true,
+        "chart_count": 1
+    },
+    "data": {
+        "fundamental": {
+            "code": "439260",
+            "name": "대한조선",
+            "analysis_date": "2026-01-20",
+            "metrics_fetched": {
+                "market_cap": "2.66조원",
+                "per": "7.5",
+                "pbr": "4.6",
+                "roe": "26.3%",
+                "date_used": "2025.09 (TTM)"
+            },
+            "checklist_details": {
+                "시가총액 3,000억 원 이상": true,
+                "증거금률 40% 이하": true,
+                "52주 최저가 대비율 10% 이하": false,
+                "52주 최고가 대비율 30% 이상": true,
+                "PER 업종 평균 이하 (또는 10 이하)": true,
+                "PBR 2 이하": false,
+                "PSR 5 이하": true,
+                "PCR 10 이하": true,
+                "PEG 1 이하": true,
+                "ROE 5% 이상": true,
+                "ROA 3% 이상": true,
+                "영업이익률 5% 이상": true,
+                "순이익률 3% 이상": true,
+                "매출액 증가율 1% 이상": true,
+                "순이익 증가율 1% 이상": true,
+                "부채 비율 100% 이하": true,
+                "유동 비율 200% 이상": false,
+                "유보율 200% 이상": true,
+                "배당수익률 2% 이상": false,
+                "외국인 지분율 30% 이상": false
+            },
+            "checked_count": 14,
+            "total_items": 20,
+            "score_label": "Excellent",
+            "action_guidance": "매수 추천"
+        },
+        "technical": {
+            "code": "439260",
+            "daily": {
+                "price_above_ma20": true,
+                "golden_cross": true,
+                "is_red_candle": true
+            },
+            "weekly": {
+                "price_above_ma20": false,
+                "ma20_slope_up": false
+            },
+            "current_price": 70600
+        },
+        "news": {
+            "code": "439260",
+            "news": [
+                {
+                    "title": "대한조선, 선가 인상 수주 본격화…목표가 10만원으로↑-다올 - edaily.co.kr",
+                    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNMGUzOHFuVFZxbnN6a3JNczB3U2x4RkVwZzV5dE5ORGl6YWRZRnZFakNRVk5PWi1md09hV0dCOEJVcExWb1NCdW41NDlReG5CRG1fQlBIeFFya1ROMXNjN2thNURkNVh5MF8taDRIU0c0eXhZa1FVSFBvTVV4Nmh4Nw?oc=5",
+                    "date": "2026.01.19 23:28",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "\"대한조선, 탱커 시장 호황에 선가 상승…목표가↑\"-다올 - 한국경제",
+                    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9rRW5EZFdRVEE1a29kektnX0NTTHcxZ0hueFMzNGlaelpvc1NQcXhsZkt0anlRUldQelF6c2oyUFNnZ0N1dEJtYVB2LXJzOFlIX1o1T9IBVEFVX3lxTE9rRW5EZFdRVEE1a29kektnX0NTTHcxZ0hueFMzNGlaelpvc1NQcXhsZkt0anlRUldQelF6c2oyUFNnZ0N1dEJtYVB2LXJzOFlIX1o1Tw?oc=5",
+                    "date": "2026.01.19 23:48",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "[종목 포커스] '국내 수익성 1위 조선사' 대한조선, 유조선 수주 확대로 '주목' - 데일리인베스트",
+                    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE92U3ktOEZGWS0wWTJDeGY5aTV3eGhRanBHN25fQUNITUtrbGd0ekFPOEJSZW5CYWFSQVRESG1HQTZKbnZNNVdwN043X20xYjhsZFlhSm9fd0RxVGs4VlkzUlB3Tm9xWXEzNW5j0gFvQVVfeXFMTTdDcjJLN1JoUHBGUlZFTC1lRkdjdmRSZ25RWWdXVURsYWFXT2dlN2ltOGY4QUVCSWtfeW12U3ljdXpoOG03ZC1BbEFnZ0ktdUpOcnU2a2lXWXppZVNHZlR2ZHU3Mnp0SGdnOUh6R1dj?oc=5",
+                    "date": "2026.01.06 08:00",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "대한조선, 선가 인상 수주 본격화…목표가 10만원으로↑-다올 - 네이트",
+                    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9wNmRrNlFjanRUMmY3Z0s0amxQM1ZEOGdCSnZkeUYtaVlncDBBSDRwVFhTMEVjYW81NU1OeXNTdThWOVNVVGE3QjA1MFFLY1dsTVRGZk5uN3Z1OG01WVVqMQ?oc=5",
+                    "date": "2026.01.19 23:29",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "대한조선, 신규 고객 NAT로부터 수에즈막스급 원유운반선 2척 수주 - 해사신문",
+                    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1tQjV1TFRVMm1MX3V0LVdTTzExM3U0SVRDWWZ1UlJQY1FYZ1A2bmt0U3E4UGZ1R3hnMDBLRll1VzhTTDZUc3BtM0gwTVRaMlJuVXVwZ2VQbFM3UUZXTmNHQUM3T0trLTl3ZTg4?oc=5",
+                    "date": "2026.01.14 11:46",
+                    "sentiment": "Positive"
+                }
+            ],
+            "fetched_at": "2026-01-20 14:24:33"
+        },
+        "images": [
+            "images\\A439260_chart.png"
+        ]
+    }
+}

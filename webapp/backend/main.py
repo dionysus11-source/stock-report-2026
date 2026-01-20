@@ -90,7 +90,11 @@ def get_report_detail(date: str, stock_code: str) -> Dict[str, Any]:
             
     try:
         with open(report_file, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+            # Normalize image paths to use forward slashes
+            if "data" in data and "images" in data["data"]:
+                data["data"]["images"] = [img.replace("\\", "/") for img in data["data"]["images"]]
+            return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading report: {str(e)}")
 
@@ -100,4 +104,4 @@ def read_root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=3001)

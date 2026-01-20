@@ -11,10 +11,13 @@ def main():
     print(f"Starting Backend from {backend_script}...")
     # Start backend
     backend = subprocess.Popen([sys.executable, backend_script], cwd=root_dir)
+    
+    # Wait for backend to initialize
+    print("Waiting for backend to stabilize (3s)...")
+    time.sleep(3)
 
     print(f"Starting Frontend from {frontend_dir}...")
     # Start frontend
-    # Use 'npm.cmd' on windows
     npm_cmd = "npm.cmd" if os.name == 'nt' else "npm"
     frontend = subprocess.Popen([npm_cmd, "run", "dev"], cwd=frontend_dir)
 
