@@ -90,17 +90,17 @@ export default function ReportDetailPage() {
 
             {/* Main Content with Tabs */}
             <Tabs defaultValue="overview" className="w-full space-y-8">
-                <TabsList className="bg-white/50 backdrop-blur-md p-1.5 rounded-2xl border border-gray-100 shadow-sm w-full md:w-auto h-auto flex overflow-x-auto scrollbar-hide">
-                    <TabsTrigger value="overview" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
+                <TabsList className="bg-white/50 backdrop-blur-md p-1.5 rounded-2xl border border-gray-100 shadow-sm w-full md:w-auto h-auto flex overflow-x-auto justify-start md:justify-center scrollbar-hide px-4 md:px-1.5">
+                    <TabsTrigger value="overview" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all shrink-0">
                         <ClientOnly><TrendingUp size={16} className="mr-2" /></ClientOnly> Overview
                     </TabsTrigger>
-                    <TabsTrigger value="fundamental" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
+                    <TabsTrigger value="fundamental" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all shrink-0">
                         <ClientOnly><ShieldCheck size={16} className="mr-2" /></ClientOnly> Fundamental
                     </TabsTrigger>
-                    <TabsTrigger value="technical" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
+                    <TabsTrigger value="technical" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all shrink-0">
                         <ClientOnly><BarChart3 size={16} className="mr-2" /></ClientOnly> Technical
                     </TabsTrigger>
-                    <TabsTrigger value="news" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all">
+                    <TabsTrigger value="news" className="rounded-xl px-6 py-2.5 font-bold text-sm data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all shrink-0">
                         <ClientOnly><Newspaper size={16} className="mr-2" /></ClientOnly> News Pulse
                     </TabsTrigger>
                 </TabsList>

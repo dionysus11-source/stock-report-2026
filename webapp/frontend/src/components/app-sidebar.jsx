@@ -49,7 +49,7 @@ export function AppSidebar() {
     };
 
     return (
-        <Sidebar variant="inset" className="border-r border-gray-100 bg-white/50 backdrop-blur-xl">
+        <Sidebar variant="inset" className="border-r border-gray-100 bg-white md:bg-white/50 backdrop-blur-xl">
             <SidebarHeader className="p-4">
                 <div className="flex items-center gap-3 px-2 mb-4">
                     <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-200">
