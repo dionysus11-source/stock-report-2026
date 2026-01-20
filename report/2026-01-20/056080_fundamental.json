@@ -1,0 +1,43 @@
+{
+    "code": "056080",
+    "name": "유진로봇",
+    "analysis_date": "2026-01-20",
+    "metrics_fetched": {
+        "market_cap": "1조 4,367억 원",
+        "per": "N/A (적자)",
+        "pbr": "33.22",
+        "roe": "-8.56%",
+        "operating_margin": "-16.22%",
+        "debt_ratio": "44.42%",
+        "foreigner_ratio": "14.86%",
+        "52w_high": "33,200원",
+        "52w_low": "6,300원",
+        "date_used": "2025.09 (TTM)"
+    },
+    "checklist_details": {
+        "시가총액 3,000억 원 이상": true,
+        "증거금률 40% 이하": true,
+        "52주 최저가 대비율 10% 이하": false,
+        "52주 최고가 대비율 30% 이상": false,
+        "PER 업종 평균 이하 (또는 10 이하)": false,
+        "PBR 2 이하": false,
+        "PSR 5 이하": false,
+        "PCR 10 이하": false,
+        "PEG 1 이하": false,
+        "ROE 5% 이상": false,
+        "ROA 3% 이상": false,
+        "영업이익률 5% 이상": false,
+        "순이익률 3% 이상": false,
+        "매출액 증가율 1% 이상": true,
+        "순이익 증가율 1% 이상": false,
+        "부채 비율 100% 이하": true,
+        "유동 비율 200% 이상": false,
+        "유보율 200% 이상": false,
+        "배당수익률 2% 이상": false,
+        "외국인 지분율 30% 이상": false
+    },
+    "checked_count": 4,
+    "total_items": 20,
+    "score_label": "Weak",
+    "action_guidance": "투자 주의"
+}
