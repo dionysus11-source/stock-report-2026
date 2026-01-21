@@ -1,0 +1,104 @@
+{
+    "stock_code": "196170",
+    "date": "2026-01-21",
+    "timestamp": "2026-01-21T10:50:00.000000",
+    "summary": {
+        "name": "알테오젠",
+        "has_fundamental": true,
+        "has_technical": true,
+        "has_news": true,
+        "chart_count": 1
+    },
+    "data": {
+        "fundamental": {
+            "code": "196170",
+            "name": "알테오젠",
+            "analysis_date": "2026-01-21",
+            "metrics_fetched": {
+                "market_cap": "약 26조원",
+                "per": "약 200~400",
+                "pbr": "약 67~100",
+                "roe": "33.7%",
+                "date_used": "2026.01 (Current/TTM)"
+            },
+            "checklist_details": {
+                "시가총액 3,000억 원 이상": true,
+                "증거금률 40% 이하": false,
+                "52주 최저가 대비율 10% 이하": false,
+                "52주 최고가 대비율 30% 이상": false,
+                "PER 업종 평균 이하 (또는 10 이하)": false,
+                "PBR 2 이하": false,
+                "PSR 5 이하": false,
+                "PCR 10 이하": false,
+                "PEG 1 이하": false,
+                "ROE 5% 이상": true,
+                "ROA 3% 이상": true,
+                "영업이익률 5% 이상": true,
+                "순이익률 3% 이상": true,
+                "매출액 증가율 1% 이상": true,
+                "순이익 증가율 1% 이상": true,
+                "부채 비율 100% 이하": true,
+                "유동 비율 200% 이상": false,
+                "유보율 200% 이상": true,
+                "배당수익률 2% 이상": false,
+                "외국인 지분율 30% 이상": false
+            },
+            "checked_count": 9,
+            "total_items": 20,
+            "score_label": "Weak",
+            "action_guidance": "주의 필요"
+        },
+        "technical": {
+            "code": "196170",
+            "daily": {
+                "price_above_ma20": false,
+                "golden_cross": false,
+                "is_red_candle": false
+            },
+            "weekly": {
+                "price_above_ma20": false,
+                "ma20_slope_up": false
+            },
+            "current_price": 407500
+        },
+        "news": {
+            "code": "196170",
+            "news": [
+                {
+                    "title": "알테오젠, GSK 자회사 테사로와 2억8500만 달러 규모 라이선스 계약 체결 - MEDI:GATE NEWS",
+                    "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBOLWFuX0FTSE9udF92RU55Sy1aNUVEczh3STlWWGY4UFpNbmJJMWJjZTZFUUVOdXVMdDZnZDVUTEx1S09sOUl3TXp2a0YyQ0NhNFByVTBHOA?oc=5",
+                    "date": "2026.01.20 05:43",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "셀트리온, K브랜드지수 제약·바이오 부문 1위 올라...알테오젠 2위 - fnnews.com",
+                    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5Sc1BCaDVLLXdydEcyWmtvd0VrNmlvekdPMVZPYl95ZUVWV0JmaWl2OTRfOWRSMmhnclEzb21rRmpidGlKYXNSM1lPd0c5ZVFBOTY4S2lCc3prUdIBXkFVX3lxTFA2WVZjVGtHVDdMd2ZjbDJkdGpDc2tsZ2NQeGduMEJNVmgxeUx4Qms2dXpIT0syb1AzREdhV0Z1OU1vMm1UMzZqNElWOEtfTW1zZ01rcHo2eFhrVmRrWmc?oc=5",
+                    "date": "2026.01.20 00:54",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "알테오젠, GSK 자회사와 4200억원 규모 ALT-B4 기술수출 계약 - 약사공론",
+                    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE14RFB3djAyWXBoTHF1S2R1TXNncGluODZIUXlJUnVoNjdfd2VHcklSSmZ5WnpHSEdxUVc3R05OX1dOVjhYZWw3WmpsTUlPVDVrb1ZFNTNTU0hya29iNElLX01HVGlmdXVuRzlxeg?oc=5",
+                    "date": "2026.01.20 22:36",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "알테오젠, GSK 자회사 Tesaro와 총 4200억 SC 기술수출 계약 - 히트뉴스",
+                    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1VV0RoQnRkWTJ6cjBSdWVXU0pWYWp0OXhFcFNacmZxei1OOXQ4RXZWWU9hNTJ0dXBObC1CZEVDWlNReGtWS0VZamdwaV9VcVhmQlY3U1djNV82Q0pkUTNTVFlqNGhIZ19kUWxr?oc=5",
+                    "date": "2026.01.20 05:50",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "기대 큰 알테오젠 4200억원 기술이전에도 주가하락 - 한국의약통신",
+                    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE91VDgtRmZkV1J1ZmFiOWRSZ3M1MHpkem05aVEtbzg5ZlhicEVhZUtJTkhPcnp5d1biWTRlOVVBU0tSR3VLbnMyLVB4eDd1Q2NqSHRWLVJVUktfcWNhT1JxY0Jwa3ZqajZPblA4?oc=5",
+                    "date": "2026.01.20 23:48",
+                    "sentiment": "Negative"
+                }
+            ],
+            "fetched_at": "2026-01-21 10:05:04"
+        },
+        "images": [
+            "images\\A196170_chart.png"
+        ]
+    }
+}

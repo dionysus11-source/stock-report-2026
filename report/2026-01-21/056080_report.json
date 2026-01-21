@@ -1,0 +1,104 @@
+{
+    "stock_code": "056080",
+    "date": "2026-01-21",
+    "timestamp": "2026-01-21T15:55:00.000000",
+    "summary": {
+        "name": "유진로봇",
+        "has_fundamental": true,
+        "has_technical": true,
+        "has_news": true,
+        "chart_count": 1
+    },
+    "data": {
+        "fundamental": {
+            "code": "056080",
+            "name": "유진로봇",
+            "analysis_date": "2026-01-21",
+            "metrics_fetched": {
+                "market_cap": "약 1조원",
+                "per": "N/A (적자)",
+                "pbr": "22.58",
+                "roe": "-13.6%",
+                "date_used": "2025.09 (TTM)"
+            },
+            "checklist_details": {
+                "시가총액 3,000억 원 이상": true,
+                "증거금률 40% 이하": false,
+                "52주 최저가 대비율 10% 이하": false,
+                "52주 최고가 대비율 30% 이상": false,
+                "PER 업종 평균 이하 (또는 10 이하)": false,
+                "PBR 2 이하": false,
+                "PSR 5 이하": false,
+                "PCR 10 이하": false,
+                "PEG 1 이하": false,
+                "ROE 5% 이상": false,
+                "ROA 3% 이상": false,
+                "영업이익률 5% 이상": false,
+                "순이익률 3% 이상": false,
+                "매출액 증가율 1% 이상": false,
+                "순이익 증가율 1% 이상": false,
+                "부채 비율 100% 이하": true,
+                "유동 비율 200% 이상": false,
+                "유보율 200% 이상": false,
+                "배당수익률 2% 이상": false,
+                "외국인 지분율 30% 이상": false
+            },
+            "checked_count": 2,
+            "total_items": 20,
+            "score_label": "Weak",
+            "action_guidance": "주의 필요"
+        },
+        "technical": {
+            "code": "056080",
+            "daily": {
+                "price_above_ma20": true,
+                "golden_cross": false,
+                "is_red_candle": true
+            },
+            "weekly": {
+                "price_above_ma20": true,
+                "ma20_slope_up": true
+            },
+            "current_price": 34200
+        },
+        "news": {
+            "code": "056080",
+            "news": [
+                {
+                    "title": "현대차 로봇 공개...시선AI·러셀·유진로봇 '피지컬AI株 급등' - gukjenews.com",
+                    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9jSFhGUjVxWmtCVXQ5S29yWlo4Y1FOVy1IbGhqY3IyQTB6eGktTjEyMFFzUjNpQURUN2RpcU9ZLUxqaWZqMlV5U094NlFOR2ZQVHR0ZE1sQVR0YXdNb0tpRDFvVWdLb0tENXBWZWdn?oc=5",
+                    "date": "2026.01.20 00:17",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "유진로봇 주가, 급등세... 개미들 '빵긋' - 금강일보",
+                    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE14UTRKZ2puTlB2eVNNYl9yZ3diS09xYURCWFlxVXUzaDl4aEdIemRnUWN4YUs0QWFTTnRVNzhxRUVCSzA2LWFsREN6RWs2VDJVWnk0cDhpdnd5SDNlZDJUdHdrQzZaQm84S2c?oc=5",
+                    "date": "2026.01.19 04:53",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "유진로봇 VI 두 번 발생...현재 거래중이라는 점 주시 - CBC뉴스",
+                    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8xZVFHWC1aeUQ5Q2RtSTl0TGZCQmxkREF3OHY5QXhhNklzcWp1QnFyTUpvVGpWeW1JOEtrRGQySVE1S0JwZGVfaGVDTHpVZlZkUTMycGZCWlRDUUtkeFN3SkUyZWI1a0Qw?oc=5",
+                    "date": "2026.01.20 01:25",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "유진로봇, 상한가 진입.. +29.94% ↑ - sedaily.com",
+                    "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1GdWRGS0EwcjRVT040bFBRUEFDNXlOMVQzdFNuZFFKS21ORHFQR0ZvN24yR2l2cUZZS0h6T3doazNVUEVVZEN3cTBHcWt6YklfQ3ZBd2RB?oc=5",
+                    "date": "2026.01.19 06:14",
+                    "sentiment": "Positive"
+                },
+                {
+                    "title": "[투자 알고리즘] 로봇주 조정은 기회! 대장 쉽게 안죽는다! 유진로봇이 대장? - 네이트",
+                    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9CNHZncUpvQ3NVZUVGczJxM2xnV3BnMjQ1Q29nRlNkanlibU1kYnBRRFlwSEk3dUZNNEo1djBMMzB1Z1Uzb3FwV2xQUGVlMzdSWkhR?oc=5",
+                    "date": "2026.01.20 05:11",
+                    "sentiment": "Positive"
+                }
+            ],
+            "fetched_at": "2026-01-21 15:51:07"
+        },
+        "images": [
+            "images/A056080_chart.png"
+        ]
+    }
+}

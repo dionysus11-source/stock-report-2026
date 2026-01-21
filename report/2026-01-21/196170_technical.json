@@ -1,0 +1,13 @@
+{
+    "code": "196170",
+    "daily": {
+        "price_above_ma20": false,
+        "golden_cross": false,
+        "is_red_candle": false
+    },
+    "weekly": {
+        "price_above_ma20": false,
+        "ma20_slope_up": false
+    },
+    "current_price": 407500
+}
