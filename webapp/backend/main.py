@@ -7,6 +7,15 @@ import shutil
 import datetime
 import os
 import json
+import sys
+
+# Add project root to path to import config
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+sys.path.append(str(BASE_DIR))
+try:
+    import config
+except ImportError:
+    config = None
 
 app = FastAPI(title="Stock Report Viewer")
 
@@ -158,4 +167,6 @@ async def upload_report(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=3001)
+    host = config.WEB_HOST if config else "0.0.0.0"
+    port = config.BACKEND_PORT if config else 3001
+    uvicorn.run(app, host=host, port=port)

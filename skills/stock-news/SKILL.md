@@ -17,10 +17,13 @@ python skills/stock-news/scripts/fetch.py --code <stock_code>
 - Creates: `report/YYYY-MM-DD/<code_raw>_news_raw.json`
 
 ### 2. Analyze Sentiment (Agent)
-- **Role**: AI Agent (human-in-the-loop)
-- **Action**: Read the raw JSON file, analyze titles, and update `sentiment` field.
-- **Constraints**: The `sentiment` field MUST be set to one of "Positive", "Negative", or "Neutral". Never leave it as "Unknown".
-- **Save As**: `report/YYYY-MM-DD/<code_raw>_report.json` (merged) or update the raw file.
+- **Action**: Run the `scripts/analyze_sentiment.py` script.
+- **Role**: AI Agent calls the script with analyzed sentiments.
+- **Command**:
+```bash
+python skills/stock-news/scripts/analyze_sentiment.py --code <stock_code> --sentiments "Positive,Neutral,Positive,..."
+```
+- **Output**: Creates/Updates `report/YYYY-MM-DD/<code_raw>_news.json`.
 
 ## Output Format
 ```json

@@ -22,13 +22,23 @@ When a user asks for a stock analysis (e.g., "Analyze Samsung Electronics", "Rep
 3.  **Aggregate Results**: Run the `scripts/analyze.py` script. This script will:
     *   Collect outputs from the sub-skills (which should be in `report/YYYY-MM-DD/`).
     *   Generate a `report.json` file in the same report directory.
-    *   This JSON file is the final output for the web interface.
-4.  **Confirm**: Inform the user that the report has been generated and provide the path to the `report.json` or the web view link.
+4.  **Upload Results**: Run the `scripts/upload.py` script to synchronize the report with the backend server.
+    ```bash
+    python skills/stock-report/scripts/upload.py --code <STOCK_CODE> [--date <YYYY-MM-DD>]
+    ```
+5.  **Confirm**: Inform the user that the report has been generated and uploaded. Provide the web view link:
+    `http://localhost:3000/reports/<DATE>/<CODE>`
 
 ## Script Usage
 
+### Aggregate
 ```bash
 python skills/stock-report/scripts/analyze.py --code <STOCK_CODE> [--date <YYYY-MM-DD>]
+```
+
+### Upload
+```bash
+python skills/stock-report/scripts/upload.py --code <STOCK_CODE> [--date <YYYY-MM-DD>]
 ```
 
 ## Output

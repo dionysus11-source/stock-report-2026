@@ -2,9 +2,19 @@ import requests
 import json
 import os
 
+import sys
+
+# Add root to sys.path to import config
+root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(root_dir)
+try:
+    import config
+except ImportError:
+    config = None
+
 def test_upload():
     # URL of the backend
-    url = "http://localhost:3001/api/upload-report"
+    url = config.UPLOAD_URL if config else "http://localhost:3001/api/upload-report"
     
     # Create a dummy report
     report_data = {

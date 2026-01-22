@@ -11,10 +11,12 @@ def get_company_name(code):
     try:
         url = f"https://finance.naver.com/item/main.naver?code={code}"
         headers = {'User-Agent': 'Mozilla/5.0'}
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
-        # Naver Finance main page is utf-8
-        soup = BeautifulSoup(response.content.decode('utf-8', 'replace'), 'html.parser')
+        # Handle encoding properly
+        if response.encoding == 'ISO-8859-1':
+            response.encoding = response.apparent_encoding
+        soup = BeautifulSoup(response.text, 'html.parser')
         
         # Look for the company name in the wrap_company div
         h2 = soup.select_one('.wrap_company h2 a')
@@ -35,7 +37,7 @@ def fetch_google_news_rss(code):
     url = f"https://news.google.com/rss/search?q={query}&hl=ko&gl=KR&ceid=KR:ko"
     
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
         response.raise_for_status()
         
         root = ET.fromstring(response.content)

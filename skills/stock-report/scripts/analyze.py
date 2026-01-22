@@ -3,6 +3,15 @@ import json
 import os
 from datetime import datetime
 import glob
+import sys
+
+# Add project root to path to import config
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+sys.path.append(base_dir)
+try:
+    import config
+except ImportError:
+    config = None
 
 def load_json(filepath):
     if not os.path.exists(filepath):
