@@ -118,7 +118,7 @@ export default function ReportDetailPage() {
                                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gray-900/40 to-transparent pointer-events-none z-10" />
                                 {images[0] ? (
                                     <img
-                                        src={`/images/${date}/${images[0].replace(/\\/g, '/')}`}
+                                        src={images[0]}
                                         alt="Market Chart"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
@@ -243,7 +243,7 @@ export default function ReportDetailPage() {
                                 <div className="aspect-video w-full bg-gray-50 flex items-center justify-center relative group">
                                     {images[1] ? (
                                         <img
-                                            src={`/images/${date}/${images[1].replace(/\\/g, '/')}`}
+                                            src={images[1]}
                                             alt="Technical Chart"
                                             className="w-full h-full object-contain p-4 group-hover:scale-[1.02] transition-transform duration-700"
                                         />
