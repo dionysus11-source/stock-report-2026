@@ -1,0 +1,104 @@
+{
+    "stock_code": "009190",
+    "date": "2026-01-22",
+    "timestamp": "2026-01-22T15:20:06.239180",
+    "summary": {
+        "name": "대양금속",
+        "has_fundamental": true,
+        "has_technical": true,
+        "has_news": true,
+        "chart_count": 1
+    },
+    "data": {
+        "fundamental": {
+            "code": "009190",
+            "name": "대양금속",
+            "analysis_date": "2026-01-22",
+            "metrics_fetched": {
+                "market_cap": "약 553-570억원",
+                "per": "N/A (적자)",
+                "pbr": "0.59-0.80",
+                "roe": "-16.25%",
+                "date_used": "2024.12 (TTM)"
+            },
+            "checklist_details": {
+                "시가총액 3,000억 원 이상": false,
+                "증거금률 40% 이하": false,
+                "52주 최저가 대비율 10% 이하": false,
+                "52주 최고가 대비율 30% 이상": false,
+                "PER 업종 평균 이하 (또는 10 이하)": false,
+                "PBR 2 이하": true,
+                "PSR 5 이하": false,
+                "PCR 10 이하": false,
+                "PEG 1 이하": false,
+                "ROE 5% 이상": false,
+                "ROA 3% 이상": false,
+                "영업이익률 5% 이상": false,
+                "순이익률 3% 이상": false,
+                "매출액 증가율 1% 이상": false,
+                "순이익 증가율 1% 이상": false,
+                "부채 비율 100% 이하": true,
+                "유동 비율 200% 이상": false,
+                "유보율 200% 이상": false,
+                "배당수익률 2% 이상": false,
+                "외국인 지분율 30% 이상": false
+            },
+            "checked_count": 2,
+            "total_items": 20,
+            "score_label": "Weak",
+            "action_guidance": "주의 필요"
+        },
+        "technical": {
+            "code": "009190",
+            "daily": {
+                "price_above_ma20": true,
+                "golden_cross": false,
+                "is_red_candle": true
+            },
+            "weekly": {
+                "price_above_ma20": false,
+                "ma20_slope_up": false
+            },
+            "current_price": 1355
+        },
+        "news": {
+            "code": "009190",
+            "news": [
+                {
+                    "title": "대양금속, 30일 임시주총 개최…‘미영위 사업’ 65개 정리·이사 규정 수정 - 철강금속신문",
+                    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE01WjM3NGs4YnphRXpwTVU1cUhoTVJuWTNtX2FsMGhyYTlvVWRINGhfYmQ4VmZCSDJUVjdDbFdESG1yLTFmUElmTlhyRG1VYkhvelhhV2U2YUFEMHZpbnhDRmd5RGZleXpq?oc=5",
+                    "date": "2026.01.16 08:35",
+                    "sentiment": "Neutral"
+                },
+                {
+                    "title": "대양금속, 2026년 승진 인사 단행 - 스틸데일리",
+                    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5oQ0tzbnlKWDZsQU9pdGZRMmVFVENTQmtWc0VTNXdZQVpTQXZuYlJUNXdCZ01zQ3hfXzM5TndkZTFKS3FvNy02TXF0cXU1Vnc5em9pNGx6cnp5QU5rTXhELUw1dzVSVThualZyMUNncmXSAXRBVV95cUxNRjVyd2FUVHdMTldGak9DbHVsVXFFc3FHT1JvbUx4Zzc1S0ZwWmlNU3JEcnQwZFBxTWNvOUtrSFY5dG1XNVc0OFhzYUJ3cVg5RlgxaWNZUWh5VU8yOUJpbHFvOHU1WmpBaXNmRlVrSDZVdFVSNg?oc=5",
+                    "date": "2026.01.05 04:26",
+                    "sentiment": "Neutral"
+                },
+                {
+                    "title": "대양금속, 분쟁 끝났다더니…절차 지연에 실적 개선도 '요원' - IB토마토",
+                    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9xUVRYWGRJWkxtcklYUmVFMlBIaXc0aWQ4RnVtcUhSNHdzLWN4eS12VzFRVWZnY08wMVZZTUlMSG9GY0gzTm41R094SmUtYllEUWFwVGthWkxfNHVMeUNoaQ?oc=5",
+                    "date": "2025.07.28 07:00",
+                    "sentiment": "Negative"
+                },
+                {
+                    "title": "[IB토마토]대양금속, 분쟁은 끝났지만…잔금 지연에 자금 조달 '빨간불' - 뉴스토마토",
+                    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5GM3FPdDRLcmtzMzNVVkZORV9zQ18tclhWSHBGeDdDSFRnZG5zaGlfUFdESm5BcDlEaWFmQWt0NEl1OF81ckF4RG9WSWZOSHRjeUxhZmp6enJ6UF9uT0NFRA?oc=5",
+                    "date": "2025.11.17 08:00",
+                    "sentiment": "Negative"
+                },
+                {
+                    "title": "대양금속, 11월 28일 임주주총 개최 - 철강금속신문",
+                    "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9KZ01zOFRHLW5MZHBzWXU1RzM4YWp1VVFULVdDY1d1QVc3a0lpSURQSHRjQ0dwZmNZWjBWQWs5Sld1REd2alNhdHJKcmpDQWVJcFhSN2o1ZkR5YzQtc2RQcnZBbFYxNWw1?oc=5",
+                    "date": "2025.10.21 07:00",
+                    "sentiment": "Neutral"
+                }
+            ],
+            "fetched_at": "2026-01-22 15:14:51"
+        },
+        "images": [
+            "images\\A009190_chart.png"
+        ]
+    }
+}

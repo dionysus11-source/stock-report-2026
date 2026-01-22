@@ -87,7 +87,7 @@ def get_report_detail(date: str, stock_code: str) -> Dict[str, Any]:
     date_dir = REPORT_DIR / date
     # Try finding the file
     report_file = date_dir / f"{stock_code}_report.json"
-    
+
     if not report_file.exists():
         # Fallback search if filename pattern differs
         found = False
@@ -98,13 +98,19 @@ def get_report_detail(date: str, stock_code: str) -> Dict[str, Any]:
                 break
         if not found:
             raise HTTPException(status_code=404, detail="Report not found")
-            
+
     try:
         with open(report_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-            # Normalize image paths to use forward slashes
+            # Normalize image paths to use forward slashes and prepend /images/
             if "data" in data and "images" in data["data"]:
-                data["data"]["images"] = [img.replace("\\", "/") for img in data["data"]["images"]]
+                normalized_images = []
+                for img in data["data"]["images"]:
+                    # Convert backslashes to forward slashes
+                    img = img.replace("\\", "/")
+                    # Prepend /images/{date}/ to make it a proper URL
+                    normalized_images.append(f"/images/{date}/{img}")
+                data["data"]["images"] = normalized_images
             return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading report: {str(e)}")
@@ -147,11 +153,15 @@ async def upload_report(
         # Save images if any
         saved_images = []
         if image_files:
+            # Create images subdirectory
+            images_dir = date_dir / "images"
+            images_dir.mkdir(parents=True, exist_ok=True)
+
             for img in image_files:
-                img_path = date_dir / img.filename
+                img_path = images_dir / img.filename
                 with open(img_path, "wb") as f:
                     shutil.copyfileobj(img.file, f)
-                saved_images.append(img.filename)
+                saved_images.append(f"images/{img.filename}")
                 
         return {
             "status": "success",

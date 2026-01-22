@@ -27,7 +27,7 @@ When a user asks for a stock analysis (e.g., "Analyze Samsung Electronics", "Rep
     python skills/stock-report/scripts/upload.py --code <STOCK_CODE> [--date <YYYY-MM-DD>]
     ```
 5.  **Confirm**: Inform the user that the report has been generated and uploaded. Provide the web view link:
-    `http://localhost:3000/reports/<DATE>/<CODE>`
+    `http://localhost:3002/reports/<DATE>/<CODE>`
 
 ## Script Usage
 

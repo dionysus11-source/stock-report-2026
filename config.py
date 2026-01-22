@@ -2,7 +2,7 @@
 
 # Network Settings
 WEB_HOST = "0.0.0.0"
-FRONTEND_PORT = 3000
+FRONTEND_PORT = 3002
 BACKEND_PORT = 3001
 
 # API Settings

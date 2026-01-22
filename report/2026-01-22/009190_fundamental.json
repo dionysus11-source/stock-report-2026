@@ -1,0 +1,38 @@
+{
+    "code": "009190",
+    "name": "대양금속",
+    "analysis_date": "2026-01-22",
+    "metrics_fetched": {
+        "market_cap": "약 553-570억원",
+        "per": "N/A (적자)",
+        "pbr": "0.59-0.80",
+        "roe": "-16.25%",
+        "date_used": "2024.12 (TTM)"
+    },
+    "checklist_details": {
+        "시가총액 3,000억 원 이상": false,
+        "증거금률 40% 이하": false,
+        "52주 최저가 대비율 10% 이하": false,
+        "52주 최고가 대비율 30% 이상": false,
+        "PER 업종 평균 이하 (또는 10 이하)": false,
+        "PBR 2 이하": true,
+        "PSR 5 이하": false,
+        "PCR 10 이하": false,
+        "PEG 1 이하": false,
+        "ROE 5% 이상": false,
+        "ROA 3% 이상": false,
+        "영업이익률 5% 이상": false,
+        "순이익률 3% 이상": false,
+        "매출액 증가율 1% 이상": false,
+        "순이익 증가율 1% 이상": false,
+        "부채 비율 100% 이하": true,
+        "유동 비율 200% 이상": false,
+        "유보율 200% 이상": false,
+        "배당수익률 2% 이상": false,
+        "외국인 지분율 30% 이상": false
+    },
+    "checked_count": 2,
+    "total_items": 20,
+    "score_label": "Weak",
+    "action_guidance": "주의 필요"
+}
