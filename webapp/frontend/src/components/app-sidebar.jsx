@@ -178,18 +178,20 @@ export function AppSidebar() {
                                     </SidebarMenuItem>
                                 ))
                             ) : (
-                                getDisplayStocks().map((stock) => (
-                                    <SidebarMenuItem key={`${stock.stock_code}-${stock.date}`}>
+                                getDisplayStocks().map((stock) => {
+                                    const stockDate = viewMode === 'date' ? selectedDate : stock.date;
+                                    return (
+                                    <SidebarMenuItem key={`${stock.stock_code}-${stockDate}`}>
                                         <SidebarMenuButton
                                             asChild
-                                            isActive={selectedCode === stock.stock_code && selectedDate === stock.date}
+                                            isActive={selectedCode === stock.stock_code && selectedDate === stockDate}
                                             className={cn(
                                                 "h-14 rounded-2xl transition-all duration-300 group px-4",
-                                                selectedCode === stock.stock_code && selectedDate === stock.date
+                                                selectedCode === stock.stock_code && selectedDate === stockDate
                                                     ? "bg-blue-50 text-blue-700 shadow-sm ring-1 ring-blue-100"
                                                     : "hover:bg-gray-50 text-gray-600"
                                             )}
-                                            onClick={() => handleStockClick(stock.stock_code, stock.date)}
+                                            onClick={() => handleStockClick(stock.stock_code, stockDate)}
                                         >
                                             <div className="flex w-full items-center justify-between">
                                                 <div className="flex flex-col gap-0.5 min-w-0">
@@ -221,7 +223,8 @@ export function AppSidebar() {
                                             </div>
                                         </SidebarMenuButton>
                                     </SidebarMenuItem>
-                                ))
+                                    );
+                                })
                             )}
                         </SidebarMenu>
                     </SidebarGroupContent>
