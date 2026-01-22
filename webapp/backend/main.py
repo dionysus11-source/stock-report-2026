@@ -60,7 +60,7 @@ def get_reports_by_date(date: str) -> List[Dict[str, Any]]:
     date_dir = REPORT_DIR / date
     if not date_dir.exists():
         raise HTTPException(status_code=404, detail="Date not found")
-    
+
     reports = []
     for entry in os.scandir(date_dir):
         if entry.is_file() and entry.name.endswith("_report.json"):
@@ -78,8 +78,73 @@ def get_reports_by_date(date: str) -> List[Dict[str, Any]]:
             except Exception as e:
                 print(f"Error reading {entry.name}: {e}")
                 continue
-    
+
     return reports
+
+@app.get("/api/stocks/all")
+def get_all_stocks() -> List[Dict[str, Any]]:
+    """Get all stocks across all dates, sorted by latest analysis date"""
+    if not REPORT_DIR.exists():
+        return []
+
+    all_stocks = []
+    for entry in os.scandir(REPORT_DIR):
+        if entry.is_dir() and entry.name[0].isdigit():
+            date = entry.name
+            for report_file in os.scandir(entry.path):
+                if report_file.is_file() and report_file.name.endswith("_report.json"):
+                    try:
+                        with open(report_file.path, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                            all_stocks.append({
+                                "stock_code": data.get("stock_code"),
+                                "summary": data.get("summary", {}),
+                                "date": date,
+                                "filename": report_file.name
+                            })
+                    except Exception as e:
+                        print(f"Error reading {report_file.name}: {e}")
+                        continue
+
+    # Sort by date descending (latest first)
+    all_stocks.sort(key=lambda x: x["date"], reverse=True)
+    return all_stocks
+
+@app.get("/api/stocks/search")
+def search_stocks(q: str) -> List[Dict[str, Any]]:
+    """Search stocks by code or name across all dates"""
+    if not REPORT_DIR.exists():
+        return []
+
+    query = q.lower()
+    results = []
+
+    for entry in os.scandir(REPORT_DIR):
+        if entry.is_dir() and entry.name[0].isdigit():
+            date = entry.name
+            for report_file in os.scandir(entry.path):
+                if report_file.is_file() and report_file.name.endswith("_report.json"):
+                    try:
+                        with open(report_file.path, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                            stock_code = data.get("stock_code", "")
+                            stock_name = data.get("summary", {}).get("name", "")
+
+                            # Match against code or name
+                            if query in stock_code.lower() or query in stock_name.lower():
+                                results.append({
+                                    "stock_code": stock_code,
+                                    "summary": data.get("summary", {}),
+                                    "date": date,
+                                    "filename": report_file.name
+                                })
+                    except Exception as e:
+                        print(f"Error reading {report_file.name}: {e}")
+                        continue
+
+    # Sort by date descending
+    results.sort(key=lambda x: x["date"], reverse=True)
+    return results
 
 @app.get("/api/reports/{date}/{stock_code}")
 def get_report_detail(date: str, stock_code: str) -> Dict[str, Any]:

@@ -15,5 +15,17 @@ export const ReportClient = {
         const response = await fetch(`/api/reports/${date}/${code}`);
         if (!response.ok) throw new Error('Failed to fetch report detail');
         return response.json();
+    },
+
+    getAllStocks: async () => {
+        const response = await fetch('/api/stocks/all');
+        if (!response.ok) throw new Error('Failed to fetch all stocks');
+        return response.json();
+    },
+
+    searchStocks: async (query) => {
+        const response = await fetch(`/api/stocks/search?q=${encodeURIComponent(query)}`);
+        if (!response.ok) throw new Error('Failed to search stocks');
+        return response.json();
     }
 };
