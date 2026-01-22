@@ -1,6 +1,7 @@
 # Capability: Documentation
 
-This capability covers the project's documentation, including setup guides, user manuals, and technical specifications.
+## Purpose
+주식 분석 시스템의 설정, 사용법 및 기술 사양을 포함한 전반적인 문서 관리를 담당한다.
 
 ## Requirements
 

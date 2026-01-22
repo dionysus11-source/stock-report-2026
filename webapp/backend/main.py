@@ -1,10 +1,12 @@
-from fastapi import FastAPI, HTTPException
+from pathlib import Path
+from typing import List, Dict, Any, Optional
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+import shutil
+import datetime
 import os
 import json
-from pathlib import Path
-from typing import List, Dict, Any
 
 app = FastAPI(title="Stock Report Viewer")
 
@@ -101,6 +103,58 @@ def get_report_detail(date: str, stock_code: str) -> Dict[str, Any]:
 @app.get("/")
 def read_root():
     return {"message": "Stock Report Viewer API"}
+
+@app.post("/api/upload-report")
+async def upload_report(
+    report_file: UploadFile = File(...),
+    image_files: List[UploadFile] = File(None)
+):
+    """
+    Upload a stock report JSON and optional images.
+    Saves to report/YYYY-MM-DD/ based on the report's internal date or today's date.
+    """
+    try:
+        # Read the report content to determine the date and stock code
+        content = await report_file.read()
+        data = json.loads(content)
+        
+        # Get date from report or use today
+        # Typical report structure might have 'date' or we use today
+        report_date = data.get("date") or datetime.datetime.now().strftime("%Y-%m-%d")
+        stock_code = data.get("stock_code") or "unknown"
+        
+        # Target directory
+        date_dir = REPORT_DIR / report_date
+        date_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Save JSON file
+        # Standard filename: {stock_code}_report.json
+        filename = f"{stock_code}_report.json"
+        target_path = date_dir / filename
+        
+        with open(target_path, "wb") as f:
+            f.write(content)
+            
+        # Save images if any
+        saved_images = []
+        if image_files:
+            for img in image_files:
+                img_path = date_dir / img.filename
+                with open(img_path, "wb") as f:
+                    shutil.copyfileobj(img.file, f)
+                saved_images.append(img.filename)
+                
+        return {
+            "status": "success",
+            "message": f"Report for {stock_code} saved to {report_date}",
+            "path": str(target_path),
+            "images_saved": saved_images
+        }
+        
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid JSON file")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
