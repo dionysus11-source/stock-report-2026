@@ -13,6 +13,13 @@ try:
 except ImportError:
     config = None
 
+# Import HTML generator
+try:
+    from generate_html import generate_static_html
+except ImportError:
+    generate_static_html = None
+    print("Warning: HTML generator not available. Install Jinja2: pip install jinja2")
+
 def load_json(filepath):
     if not os.path.exists(filepath):
         return None
@@ -27,7 +34,9 @@ def main():
     parser = argparse.ArgumentParser(description='Aggregate stock analysis reports.')
     parser.add_argument('--code', type=str, required=True, help='Stock code')
     parser.add_argument('--date', type=str, help='Analysis date (YYYY-MM-DD). Defaults to today.')
-    
+    parser.add_argument('--skip-html', action='store_true', help='Skip HTML generation')
+    parser.add_argument('--upload', action='store_true', help='Upload report to server after generation')
+
     args = parser.parse_args()
     
     stock_code = args.code
@@ -100,8 +109,25 @@ def main():
     output_file = os.path.join(report_dir, f"{stock_code}_report.json")
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(report, f, ensure_ascii=False, indent=4)
-    
+
     print(f"Successfully generated aggregated report: {output_file}")
+
+    # Generate HTML report
+    if not args.skip_html and generate_static_html:
+        try:
+            html_path = generate_static_html(report_dir, stock_code, date_str)
+            if html_path:
+                print(f"[OK] HTML Report: {html_path}")
+        except Exception as e:
+            print(f"Warning: HTML generation failed: {e}")
+
+    # Optional upload
+    if args.upload:
+        try:
+            from upload import upload_report
+            upload_report(stock_code, date_str)
+        except Exception as e:
+            print(f"Warning: Upload failed: {e}")
 
 if __name__ == '__main__':
     main()

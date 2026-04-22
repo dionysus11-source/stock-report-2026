@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>056080 - Stock Analysis Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f2f4f6;
+            color: #191f28;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 2.5rem;
+            }
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+                gap: 2.5rem;
+            }
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .badges {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.625rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .badge-blue {
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #dbeafe;
+        }
+
+        .badge-gray {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            color: #9ca3af;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .stock-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .stock-name {
+                font-size: 3rem;
+            }
+        }
+
+        .stock-code {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #d1d5db;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.75rem;
+        }
+
+        .score-display {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .score-current {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #2563eb;
+            letter-spacing: -0.05em;
+        }
+
+        .score-total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #e5e7eb;
+        }
+
+        .score-badge {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.375rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            margin-bottom: 2rem;
+        }
+
+        .tabs-list {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            padding: 0.375rem 1rem;
+            border-radius: 1rem;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 0.25rem;
+            overflow-x: auto;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 768px) {
+            .tabs-list {
+                padding: 0.375rem;
+                width: auto;
+                justify-content: center;
+            }
+        }
+
+        .tab-trigger {
+            border: none;
+            background: transparent;
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-trigger:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .tab-trigger.active {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(0.5rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 2.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #111827;
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Images */
+        .chart-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chart-placeholder {
+            aspect-ratio: 16 / 9;
+            background: #f9fafb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: #d1d5db;
+        }
+
+        .chart-placeholder-text {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+        }
+
+        /* Checklist */
+        .checklist-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem;
+            border-radius: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .checklist-item.pass {
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .checklist-item.fail {
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .checklist-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #374151;
+            padding-right: 1rem;
+        }
+
+        .checklist-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .checklist-icon.pass {
+            background: white;
+            color: #22c55e;
+            border: 1px solid #bbf7d0;
+        }
+
+        .checklist-icon.fail {
+            background: white;
+            color: #ef4444;
+            border: 1px solid #fecaca;
+        }
+
+        /* Technical Indicators */
+        .technical-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .indicator-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #4b5563;
+        }
+
+        .indicator-label.inactive {
+            color: #d1d5db;
+        }
+
+        .indicator-value {
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: #111827;
+        }
+
+        .indicator-badge {
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid;
+        }
+
+        .indicator-badge.active-blue {
+            background: #eff6ff;
+            color: #3b82f6;
+            border-color: #bfdbfe;
+        }
+
+        .indicator-badge.active-red {
+            background: #fef2f2;
+            color: #ef4444;
+            border-color: #fecaca;
+        }
+
+        .indicator-badge.inactive {
+            background: #f9fafb;
+            color: #d1d5db;
+            border-color: #f3f4f6;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card:hover {
+            background: #f9fafb;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 6rem;
+            height: 6rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            filter: blur(2rem);
+            margin-right: -3rem;
+            margin-top: -3rem;
+            transition: background 0.3s;
+        }
+
+        .news-card:hover::before {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #111827;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            display: block;
+        }
+
+        .news-title:hover {
+            color: #2563eb;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            text-decoration-color: #dbeafe;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sentiment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.625rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid;
+        }
+
+        .sentiment-positive {
+            background: #f0fdf4;
+            color: #16a34a;
+            border-color: #bbf7d0;
+        }
+
+        .sentiment-negative {
+            background: #fef2f2;
+            color: #dc2626;
+            border-color: #fecaca;
+        }
+
+        .sentiment-neutral {
+            background: #f9fafb;
+            color: #4b5563;
+            border-color: #e5e7eb;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #111827;
+        }
+
+        /* Utility */
+        .text-blue {
+            color: #2563eb;
+        }
+
+        .text-green {
+            color: #22c55e;
+        }
+
+        .text-red {
+            color: #ef4444;
+        }
+
+        .bg-blue {
+            background: #2563eb;
+        }
+
+        .icon {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .icon-lg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Link Icon */
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #f3f4f6;
+            color: #9ca3af;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .external-link:hover {
+            background: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<!-- Header -->
+<header class="header">
+    <div class="header-left">
+        <div class="badges">
+            <span class="badge badge-blue">Verified Analysis</span>
+            <div class="badge-gray">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                2026-04-22
+            </div>
+        </div>
+        <div>
+            <h1 class="stock-name">
+                056080
+                <a href="https://www.tossinvest.com/stocks/A056080/order" target="_blank" rel="noopener noreferrer" class="external-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="17 1 21 5 17 9"></polyline>
+                        <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                        <polyline points="7 23 3 19 7 15"></polyline>
+                        <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                </a>
+            </h1>
+            <p class="stock-code">056080</p>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <div class="score-display">
+            <span class="score-current">0</span>
+            <span class="score-total">/ 0</span>
+        </div>
+        <span class="score-badge">Score</span>
+    </div>
+</header>
+
+<!-- Tabs -->
+<div class="tabs-container">
+    <div class="tabs-list">
+        <button class="tab-trigger" data-trigger="overview" onclick="switchTab('overview')">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            Overview
+        </button>
+        <button class="tab-trigger" data-trigger="fundamental" onclick="switchTab('fundamental')">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Fundamental
+        </button>
+        <button class="tab-trigger" data-trigger="technical" onclick="switchTab('technical')">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Technical
+        </button>
+        <button class="tab-trigger" data-trigger="news" onclick="switchTab('news')">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                <path d="M18 14h-8"></path>
+                <path d="M15 18h-5"></path>
+                <path d="M10 6h8v4h-8V6Z"></path>
+            </svg>
+            News Pulse
+        </button>
+    </div>
+</div>
+
+<!-- Tab Contents -->
+<div class="tab-contents">
+<!-- Overview Tab -->
+<div class="tab-content" data-tab="overview">
+    <div class="grid-3">
+        <!-- Chart -->
+        <div class="card" style="grid-column: span 2;">
+                <div class="chart-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="chart-placeholder-text">Initializing Chart...</span>
+                </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Invest Decision -->
+            <div class="card bg-blue" style="color: white; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; right: 0; width: 8rem; height: 8rem; background: rgba(255,255,255,0.1); border-radius: 50%; filter: blur(2rem); margin-right: -4rem; margin-top: -4rem;"></div>
+                <div class="card-header" style="padding-bottom: 0;">
+                    <div style="font-size: 0.625rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; opacity: 0.8; margin-bottom: 1rem;">Invest Decision</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <p style="font-size: 1.5rem; font-weight: 900; line-height: 1.2;">
+                        Analysis Required
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Pulse -->
+            <div class="card" style="padding: 1.5rem;">
+                <h3 style="font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 1rem;">Quick Pulse</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div class="technical-indicator">
+                        <span class="indicator-label">Current Price</span>
+                        <span class="indicator-value">- KRW</span>
+                    </div>
+                    <div class="technical-indicator">
+                        <span class="indicator-label inactive">Bullish Trend</span>
+                            <div class="indicator-badge inactive">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </div>
+                    </div>
+                    <div class="technical-indicator">
+                        <span class="indicator-label inactive">Golden Cross</span>
+                            <div class="indicator-badge inactive">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- Fundamental Tab -->
+<div class="tab-content" data-tab="fundamental">
+    <div class="grid-2">
+        <!-- Health Check -->
+        <div class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h3 class="card-title">Health Check</h3>
+                    <p class="card-subtitle">Financial Discipline</p>
+                </div>
+                <div style="width: 2.5rem; height: 2.5rem; background: #eff6ff; color: #2563eb; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-content" style="padding-top: 0;">
+                <div class="checklist-container custom-scrollbar">
+                        <p style="text-align: center; color: #9ca3af; padding: 2rem;">No fundamental data available</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investor Notes -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 style="font-size: 1.125rem; font-weight: 900; color: #111827; display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 0.25rem; height: 1.5rem; background: #2563eb; border-radius: 9999px;"></div>
+                        Investor Notes
+                    </h3>
+                </div>
+                <div class="card-content" style="color: #4b5563; font-size: 0.875rem; font-weight: 500; line-height: 1.75;">
+                        <p>No fundamental analysis data available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- Technical Tab -->
+<div class="tab-content" data-tab="technical">
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div class="grid-2">
+            <!-- Daily Chart Pulse -->
+            <div class="card">
+                <div class="card-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 class="card-title">Daily Chart Pulse</h3>
+                        <div style="width: 0.5rem; height: 0.5rem; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);"></div>
+                    </div>
+                </div>
+                <div class="card-content" style="padding-top: 0;">
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="technical-indicator">
+                            <span class="indicator-label inactive">Price Above MA20</span>
+                                <div class="indicator-badge inactive">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                        </div>
+                        <div class="technical-indicator">
+                            <span class="indicator-label inactive">Golden Cross</span>
+                                <div class="indicator-badge inactive">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                        </div>
+                        <div class="technical-indicator">
+                            <span class="indicator-label inactive">Red Candle (Strength)</span>
+                                <div class="indicator-badge inactive">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Trend Analysis -->
+            <div class="card">
+                <div class="card-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 class="card-title">Weekly Trend Analysis</h3>
+                        <div style="width: 0.5rem; height: 0.5rem; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);"></div>
+                    </div>
+                </div>
+                <div class="card-content" style="padding-top: 0;">
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="technical-indicator">
+                            <span class="indicator-label inactive">Price Above MA20</span>
+                                <div class="indicator-badge inactive">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                        </div>
+                        <div class="technical-indicator">
+                            <span class="indicator-label inactive">Trend Velocity Up</span>
+                                <div class="indicator-badge inactive">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                        </div>
+                        <div class="technical-indicator">
+                            <span class="indicator-label">Volume Strength</span>
+                            <div class="indicator-badge active-blue">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Chart -->
+        <div class="card" style="padding: 0;">
+            <div style="aspect-ratio: 16 / 9; width: 100%; background: #f9fafb; display: flex; align-items: center; justify-content: center; position: relative;">
+                    <div style="color: #d1d5db; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem;">Secondary Chart Loading...</div>
+            </div>
+        </div>
+    </div>
+</div><!-- News Tab -->
+<div class="tab-content" data-tab="news">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div class="section-header">
+            <h3 class="section-title">Market Pulse News</h3>
+            <span class="badge" style="border-radius: 9999px; border: 1px solid #e5e7eb; color: #9ca3af; font-weight: 700; padding: 0.5rem 0.75rem; font-size: 0.75rem;">
+                0 Recent Articles
+            </span>
+        </div>
+
+        <div class="grid-2">
+                <div class="card" style="grid-column: span 2; text-align: center; padding: 4rem 2rem; background: #fef2f2; border: 1px solid #fecaca;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="margin: 0 auto 1.5rem;">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    <h2 style="font-size: 1.25rem; font-weight: 900; color: #111827; margin-bottom: 0.5rem;">No News Data</h2>
+                    <p style="color: #6b7280; font-weight: 500;">Recent news articles are not available for this stock.</p>
+                </div>
+        </div>
+    </div>
+</div></div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Deactivate all tab triggers
+            document.querySelectorAll('.tab-trigger').forEach(trigger => {
+                trigger.classList.remove('active');
+            });
+
+            // Show selected tab content
+            const selectedContent = document.querySelector(`[data-tab="${tabName}"]`);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+
+            // Activate selected tab trigger
+            const selectedTrigger = document.querySelector(`[data-trigger="${tabName}"]`);
+            if (selectedTrigger) {
+                selectedTrigger.classList.add('active');
+            }
+        }
+
+        // Initialize first tab
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstTab = document.querySelector('.tab-trigger');
+            if (firstTab) {
+                switchTab(firstTab.dataset.trigger);
+            }
+        });
+    </script>
+</body>
+</html>
