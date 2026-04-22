@@ -34,6 +34,39 @@ def load_json_data(report_dir, stock_code):
     return data
 
 
+def get_stock_name(stock_code):
+    """Get stock name from known stocks database."""
+    known_stocks = {
+        '005930': '삼성전자',
+        '000660': 'SK하이닉스',
+        '035420': 'NAVER',
+        '035720': '카카오',
+        '005380': '현대차',
+        '051910': 'LG화학',
+        '066570': 'LG전자',
+        '003670': '포항홀딩스',
+        '012330': '현대모비스',
+        '000270': '기아',
+        '105560': 'KB금융',
+        '055550': '신한지주',
+        '068270': '셀트리온',
+        '028260': '삼성물산',
+        '009540': '현대중공업',
+        '009150': '삼성전기',
+        '006400': '삼성SDI',
+        '018260': '삼성에스디에스',
+        '034730': 'SK',
+        '003550': 'LG',
+        '056080': '유진로봇',
+        '066975': 'LG에너지솔루션',
+        '007700': '삼성SDS',
+        '247540': '에코프로',
+        '069260': '에코프로비엠',
+        '194450': '한국금융지주',
+    }
+    return known_stocks.get(stock_code, stock_code)
+
+
 def generate_static_html(report_dir, stock_code, date_str=None):
     """
     Generate static HTML report from JSON data.
@@ -64,10 +97,10 @@ def generate_static_html(report_dir, stock_code, date_str=None):
     news = report_data.get('data', {}).get('news')
     images = report_data.get('data', {}).get('images', [])
 
-    # Get stock name from summary or fundamental
+    # Get stock name from summary, fundamental, or known stocks database
     stock_name = (report_data.get('summary', {}).get('name') or
                   (fundamental.get('name') if fundamental else None) or
-                  stock_code)
+                  get_stock_name(stock_code))
 
     # Convert Windows backslashes to forward slashes for web compatibility
     images = [img.replace('\\', '/') for img in images]
