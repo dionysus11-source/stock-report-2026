@@ -13,7 +13,9 @@ When a user asks for a stock analysis (e.g., "Analyze Samsung Electronics", "Rep
 
 ## Steps
 
-1.  **Identify Stock Code**: Determine the stock ticker/code from the user's request.
+1.  **Identify Stock**:
+    *   Use `--code` if you know the stock code (e.g., `005930` for Samsung)
+    *   Use `--name` to auto-search by company name (e.g., `삼성전자`)
 2.  **Run Sub-Skills**: Execute the following skills for the target stock:
     *   `stock-capture`: To get chart screenshots.
     *   `stock-fundamental`: To get financial data (PBR, PER, ROE, etc.).
@@ -34,15 +36,26 @@ When a user asks for a stock analysis (e.g., "Analyze Samsung Electronics", "Rep
 ## Script Usage
 
 ### Aggregate & Generate HTML
+
 ```bash
-python skills/stock-report/scripts/analyze.py --code <STOCK_CODE> [--date <YYYY-MM-DD>]
+# Using stock code (direct)
+python skills/stock-report/scripts/analyze.py --code 005930
+
+# Using company name (auto-search)
+python skills/stock-report/scripts/analyze.py --name 삼성전자
+
+# With date
+python skills/stock-report/scripts/analyze.py --code 005930 --date 2026-01-20
 ```
 
 **Options:**
-- `--code`: Stock code (required)
-- `--date`: Analysis date (optional, defaults to today)
+- `--code <CODE>`: Stock code (e.g., 005930)
+- `--name <NAME>`: Company name for auto-search (e.g., 삼성전자)
+- `--date <YYYY-MM-DD>`: Analysis date (defaults to today)
 - `--skip-html`: Skip HTML generation (JSON only)
 - `--upload`: Upload to server after generation
+
+**Note**: Either `--code` or `--name` must be provided. If both are provided, `--code` takes precedence.
 
 ### Upload Only
 ```bash

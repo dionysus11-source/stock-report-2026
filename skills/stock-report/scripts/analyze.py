@@ -20,6 +20,34 @@ except ImportError:
     generate_static_html = None
     print("Warning: HTML generator not available. Install Jinja2: pip install jinja2")
 
+# Import stock search
+def search_stock_code(keyword):
+    """종목명으로 종목코드 검색"""
+    try:
+        # From skills/stock-report/scripts/analyze.py to skills/stock-search/scripts/search.py
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        search_script = os.path.join(current_dir, '..', '..', 'stock-search', 'scripts', 'search.py')
+        search_script = os.path.normpath(search_script)
+
+        if not os.path.exists(search_script):
+            return None
+
+        import subprocess
+        result = subprocess.run(
+            [sys.executable, search_script, keyword, '--format', 'json'],
+            capture_output=True,
+            timeout=30,
+            encoding='utf-8',
+            errors='replace'
+        )
+
+        if result.returncode == 0:
+            data = json.loads(result.stdout)
+            return data
+        return None
+    except Exception:
+        return None
+
 def load_json(filepath):
     if not os.path.exists(filepath):
         return None
@@ -32,14 +60,56 @@ def load_json(filepath):
 
 def main():
     parser = argparse.ArgumentParser(description='Aggregate stock analysis reports.')
-    parser.add_argument('--code', type=str, required=True, help='Stock code')
+    parser.add_argument('--code', type=str, help='Stock code (use --name for search)')
+    parser.add_argument('--name', type=str, help='Stock name to search code (e.g., "삼성전자")')
     parser.add_argument('--date', type=str, help='Analysis date (YYYY-MM-DD). Defaults to today.')
     parser.add_argument('--skip-html', action='store_true', help='Skip HTML generation')
     parser.add_argument('--upload', action='store_true', help='Upload report to server after generation')
 
     args = parser.parse_args()
-    
+
+    # 종목명 검색 (--name 파라미터)
     stock_code = args.code
+    if args.name and not args.code:
+        print(f"종목명 '{args.name}'으로 검색 중...")
+        search_results = search_stock_code(args.name)
+
+        if search_results and len(search_results) > 0:
+            if len(search_results) == 1:
+                # 단일 결과
+                stock_code = search_results[0]['code']
+                name = search_results[0]['name']
+                # Handle encoding for Windows
+                try:
+                    print(f"[OK] 종목코드 찾음: {name} ({stock_code})")
+                except UnicodeEncodeError:
+                    print(f"[OK] 종목코드 찾음: {stock_code}")
+            else:
+                # 여러 결과
+                print(f"\n[INFO] '{args.name}' 검색 결과가 {len(search_results)}건 있습니다:")
+                for i, r in enumerate(search_results, 1):
+                    try:
+                        print(f"  {i}. {r['code']} - {r['name']} ({r['market']})")
+                    except UnicodeEncodeError:
+                        print(f"  {i}. {r['code']} - ({r['market']})")
+
+                # 첫번째 결과 사용
+                stock_code = search_results[0]['code']
+                print(f"\n[INFO] 첫번째 결과 사용: {stock_code}")
+        else:
+            print(f"[ERROR] '{args.name}'에 대한 검색 결과가 없습니다.")
+            print("종목명을 정확히 입력했는지 확인해주세요.")
+            return 1
+
+    if not stock_code:
+        print("[ERROR] --code 또는 --name 파라미터가 필요합니다.")
+        print("사용법:")
+        print("  python analyze.py --code 005930")
+        print("  python analyze.py --name 삼성전자")
+        return 1
+
+    # stock_code is already set (either from args.code or from search results)
+    # Don't overwrite it here
     date_str = args.date if args.date else datetime.now().strftime('%Y-%m-%d')
     
     # Path to report directory

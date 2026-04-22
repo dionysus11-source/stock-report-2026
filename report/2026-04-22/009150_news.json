@@ -1,0 +1,42 @@
+{
+    "code": "009150",
+    "news": [
+        {
+            "title": "삼성전기, 영업 13% 흑자... 사상최대 실적",
+            "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1vVkJ4MkcyaUswQWNSRXNVREdXVXhoelRmRzRxenRNdWlOZ1BhaE5qam8tTHphbHJsODJkeXg0WHZXeGFYVHdsdUQwVFlvdXVzTWhndlVhc1A0akd3NWVtMtIBeEFVX3lxTE52S0E4QVBKVFJhVkQ3RHE4QVNuYWlUTzBWS0U5eDdTR3EyT2Zya2NaU2VSbnVMdWFuTmlZcFJsa1hIcGpjY2J3d1VBelNhRTllSFlaaFFIOUhwUFJ6WmRXdDdGaEpsS0p2alh5LTlzMzVnV3ZOMDZFMw?oc=5",
+            "date": "2026.04.21 06:06",
+            "sentiment": "Positive"
+        },
+        {
+            "title": "삼성전기, AI서버 사업 본격화... 기대",
+            "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1DUWEwcEdhclBYbS1wSVFPdTBGV0xOaDlFTkw1aTN6T3JFRDh0Zm12by1mT3ZYXzlEOTRjcDV6UzRzMjZQWXFkYTJ3UkVoaUJIbWpUd1VB?oc=5",
+            "date": "2026.04.20 09:04",
+            "sentiment": "Positive"
+        },
+        {
+            "title": "\"성장 동력 있는 기업\" LS전자, 영업이익 77% 증가... 삼성전기 FC-BGA 기판 1위 굳히기 [실적최대]",
+            "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13bldtNmVIekt3MWZzdHNUMnRwTTQ1YXBqNUFHNnZCRHFQSFdieW1jQnZTdW9iaUQ1Rlh1OXpnOGd4SjI3VHQydXI2Nk9WcjA?oc=5",
+            "date": "2026.04.22 02:07",
+            "sentiment": "Positive"
+        },
+        {
+            "title": "2분기 연속 영업이익 사상최대 삼성전기 5%↑",
+            "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1GeFBLOWtXclo4Qm5qZFNGWnNLV1h3MnZDS2ZOdFBiYlhGcmVkS2M3SVlFOHpJcnItX2VkT1M3MVl5cTVFYVBJWUE5WFV2NUhDRkk1b0hsd3dweHlub0lSeUxPeFJiekFvTG5SNEhUeVczM3c?oc=5",
+            "date": "2026.04.22 00:32",
+            "sentiment": "Positive"
+        },
+        {
+            "title": "\"대만 폭스콘 협업\"",
+            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9wZGtUOWZOQlZGU0ZRRnVsU1EwdFFVYlRjY3BQb1k3QVQxYlEyenc1WDl3ZGU5VllsUWNRNXpEa04wTW1kNVlWck1iaVh3ZjEwdEt5TFFaYmg2d9IBVEFVX3lxTE8xdlZmN245ZS1NSzZKRi13X3YwbjcwTUgxQVdkMzRrcVZ3bVlyVzB0d0U5M0RCWVFyb3duX0pnaHdUZjByTV9UN0NJaE9TejhhTjV5WQ?oc=5",
+            "date": "2026.04.21 11:00",
+            "sentiment": "Neutral"
+        }
+    ],
+    "fetched_at": "2026-04-22 11:50:24",
+    "sentiment_summary": {
+        "positive": 4,
+        "neutral": 1,
+        "negative": 0,
+        "total": 5
+    }
+}
