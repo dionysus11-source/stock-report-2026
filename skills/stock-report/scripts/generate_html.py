@@ -64,6 +64,11 @@ def generate_static_html(report_dir, stock_code, date_str=None):
     news = report_data.get('data', {}).get('news')
     images = report_data.get('data', {}).get('images', [])
 
+    # Get stock name from summary or fundamental
+    stock_name = (report_data.get('summary', {}).get('name') or
+                  (fundamental.get('name') if fundamental else None) or
+                  stock_code)
+
     # Convert Windows backslashes to forward slashes for web compatibility
     images = [img.replace('\\', '/') for img in images]
 
@@ -89,6 +94,7 @@ def generate_static_html(report_dir, stock_code, date_str=None):
 
     html_content = template.render(
         code=stock_code,
+        name=stock_name,
         date=date_str,
         fundamental=fundamental,
         technical=technical,
