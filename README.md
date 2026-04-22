@@ -6,10 +6,27 @@ Claude를 위한 한국 주식 분석 스킬 모음입니다. 종목 검색, 차
 
 이 프로젝트는 Claude Code (Claude CLI)와 함께 사용하도록 설계되었습니다.
 
-### 1. 저장소 복제
+### 방법 1: Marketplace에서 직접 설치 (권장)
+
+Claude CLI가 설치되어 있다면 다음 명령어로 스킬을 직접 설치할 수 있습니다:
 
 ```bash
-git clone https://github.com/yourusername/stock-analyzer-2026.git
+# 모든 스킬 한번에 설치
+claude skill install github:dionysus11-source/stock-analyzer
+
+# 또는 개별 스킬 설치
+claude skill install github:dionysus11-source/stock-analyzer/stock-capture
+claude skill install github:dionysus11-source/stock-analyzer/stock-fundamental
+claude skill install github:dionysus11-source/stock-analyzer/stock-news
+claude skill install github:dionysus11-source/stock-analyzer/stock-report
+claude skill install github:dionysus11-source/stock-analyzer/stock-search
+claude skill install github:dionysus11-source/stock-analyzer/stock-technical
+```
+
+### 방법 2: 저장소 복제
+
+```bash
+git clone https://github.com/dionysus11-source/stock-analyzer-2026.git
 cd stock-analyzer-2026
 ```
 

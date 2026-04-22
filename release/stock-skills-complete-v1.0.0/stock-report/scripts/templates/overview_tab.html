@@ -1,0 +1,87 @@
+<!-- Overview Tab -->
+<div class="tab-content" data-tab="overview">
+    <div class="grid-3">
+        <!-- Chart -->
+        <div class="card" style="grid-column: span 2;">
+            {% if images and images|length > 0 %}
+                <img src="./{{ images[0] }}" alt="Market Chart" class="chart-image">
+            {% else %}
+                <div class="chart-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="chart-placeholder-text">Initializing Chart...</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Invest Decision -->
+            <div class="card bg-blue" style="color: white; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; right: 0; width: 8rem; height: 8rem; background: rgba(255,255,255,0.1); border-radius: 50%; filter: blur(2rem); margin-right: -4rem; margin-top: -4rem;"></div>
+                <div class="card-header" style="padding-bottom: 0;">
+                    <div style="font-size: 0.625rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; opacity: 0.8; margin-bottom: 1rem;">Invest Decision</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <p style="font-size: 1.5rem; font-weight: 900; line-height: 1.2;">
+                        {{ fundamental.action_guidance if fundamental else 'Analysis Required' }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Pulse -->
+            <div class="card" style="padding: 1.5rem;">
+                <h3 style="font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 1rem;">Quick Pulse</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div class="technical-indicator">
+                        <span class="indicator-label">Current Price</span>
+                        <span class="indicator-value">{{ '{:,.0f}'.format(technical.current_price) if technical and technical.current_price else '-' }} KRW</span>
+                    </div>
+                    <div class="technical-indicator">
+                        <span class="indicator-label {% if technical and technical.weekly and technical.weekly.ma20_slope_up %}{% else %}inactive{% endif %}">Bullish Trend</span>
+                        {% if technical and technical.weekly and technical.weekly.ma20_slope_up %}
+                            <div class="indicator-badge active-blue">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                        {% else %}
+                            <div class="indicator-badge inactive">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="technical-indicator">
+                        <span class="indicator-label {% if technical and technical.daily and technical.daily.golden_cross %}{% else %}inactive{% endif %}">Golden Cross</span>
+                        {% if technical and technical.daily and technical.daily.golden_cross %}
+                            <div class="indicator-badge active-blue">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                        {% else %}
+                            <div class="indicator-badge inactive">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<!-- News Tab -->
+<div class="tab-content" data-tab="news">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div class="section-header">
+            <h3 class="section-title">Market Pulse News</h3>
+            <span class="badge" style="border-radius: 9999px; border: 1px solid #e5e7eb; color: #9ca3af; font-weight: 700; padding: 0.5rem 0.75rem; font-size: 0.75rem;">
+                {{ news.news|length if news and news.news else 0 }} Recent Articles
+            </span>
+        </div>
+
+        <div class="grid-2">
+            {% if news and news.news %}
+                {% for article in news.news %}
+                    <div class="news-card">
+                        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="news-title">
+                            {{ article.title }}
+                        </a>
+                        <div class="news-footer">
+                            {% if article.sentiment %}
+                                <div class="sentiment-badge {% if article.sentiment == 'Positive' %}sentiment-positive{% elif article.sentiment == 'Negative' %}sentiment-negative{% else %}sentiment-neutral{% endif %}">
+                                    <span style="font-size: 1.125rem;">
+                                        {% if article.sentiment == 'Positive' %}😊{% elif article.sentiment == 'Negative' %}☹️{% else %}😐{% endif %}
+                                    </span>
+                                    {{ article.sentiment }}
+                                </div>
+                            {% endif %}
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #d1d5db; transition: all 0.2s;" class="news-card:hover:text-blue-400 news-card:hover:translate-x-1">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="card" style="grid-column: span 2; text-align: center; padding: 4rem 2rem; background: #fef2f2; border: 1px solid #fecaca;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="margin: 0 auto 1.5rem;">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    <h2 style="font-size: 1.25rem; font-weight: 900; color: #111827; margin-bottom: 0.5rem;">No News Data</h2>
+                    <p style="color: #6b7280; font-weight: 500;">Recent news articles are not available for this stock.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
