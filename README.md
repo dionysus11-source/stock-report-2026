@@ -1,8 +1,10 @@
 # Stock Analyzer 2026
 
-한국 주식 시장(KOSPI/KOSDAQ) 종목 분석 스킬 모음입니다. 종목 검색, 차트 캡처, 기본적/기술적 분석, 뉴스 수집, 정적 HTML 리포트 생성을 지원합니다.
+Claude를 위한 한국 주식 분석 스킬 모음입니다. 종목 검색, 차트 캡처, 기본적/기술적 분석, 뉴스 수집, 정적 HTML 리포트 생성을 지원합니다.
 
-## 빠른 시작
+## Claude와 함께 사용하기
+
+이 프로젝트는 Claude Code (Claude CLI)와 함께 사용하도록 설계되었습니다.
 
 ### 1. 저장소 복제
 
@@ -23,93 +25,75 @@ pip install requests beautifulsoup4 jinja2 finance-datareader pandas
 npm install puppeteer
 ```
 
-### 3. 종목 분석 실행
+### 3. Claude에게 분석 요청하기
 
-**간편 방법 (종목명으로):**
-```bash
-# 종목코드 검색
-python skills/stock-search/scripts/search.py 삼성전자
+Claude에게 자연어로 종목 분석을 요청하세요:
 
-# 전체 분석 실행 (데이터 수집 → 리포트 생성)
-python skills/stock-report/scripts/analyze.py --name 삼성전자
-
-# HTML 리포트 확인
-start report/2026-04-22/005930_report.html
+```
+"삼성전자 분석해줘"
+"유진로봇 주식 분석 부탁해"
+"005930 종목 리포트 생성해줘"
 ```
 
-**상세 방법 (개별 스킬 실행):**
-```bash
-# 1. 종목코드 검색
-python skills/stock-search/scripts/search.py 삼성전자
-# → 005930
+Claude가 자동으로:
+1. 종목 코드를 검색합니다 (stock-search 스킬)
+2. 차트를 캡처합니다 (stock-capture 스킬)
+3. 뉴스를 수집합니다 (stock-news 스킬)
+4. 기술적 분석을 수행합니다 (stock-technical 스킬)
+5. 기본적 분석을 수행합니다 (stock-fundamental 스킬)
+6. HTML 리포트를 생성합니다 (stock-report 스킬)
 
-# 2. 차트 캡처
-node skills/stock-capture/scripts/capture.js 005930
+### 4. 리포트 확인
 
-# 3. 뉴스 수집
-python skills/stock-news/scripts/fetch.py --code 005930
-
-# 4. 기술적 분석
-python skills/stock-technical/scripts/analyze.py --code 005930
-
-# 5. 기본적 분석 (Agent가 생성하거나 수동으로 JSON 생성)
-#    → report/2026-04-22/005930_fundamental.json
-
-# 6. 리포트 통합 + HTML 생성
-python skills/stock-report/scripts/analyze.py --code 005930
 ```
+report/YYYY-MM-DD/{CODE}_report.html
+```
+
+브라우저에서 열어서 확인하세요!
 
 ## 포함된 스킬
 
-### 1. stock-search
+### stock-search
 종목명으로 종목코드를 검색합니다.
 
-```bash
-python skills/stock-search/scripts/search.py 삼성전자
-python skills/stock-search/scripts/search.py 유진로봇 --format json
-```
+**Claude에게 요청:**
+- "삼성전자 종목코드 찾아줘"
+- "유진로봇 코드 알려줘"
 
-### 2. stock-capture
+### stock-capture
 Toss 증권에서 차트 이미지를 캡처합니다.
 
-```bash
-node skills/stock-capture/scripts/capture.js 005930
-```
+**Claude에게 요청:**
+- "005930 차트 캡처해줘"
+- "삼성전자 주가 차트 이미지 가져와줘"
 
-### 3. stock-news
-Google News RSS에서 최신 뉴스를 가져옵니다.
+### stock-news
+Google News RSS에서 최신 뉴스를 가져오고 감정 분석을 수행합니다.
 
-```bash
-# 뉴스 가져오기
-python skills/stock-news/scripts/fetch.py --code 005930
+**Claude에게 요청:**
+- "005930 최신 뉴스 가져와줘"
+- "삼성전자 관련 뉴스 분석해줘"
 
-# 감정 분석 (선택)
-python skills/stock-news/scripts/analyze_sentiment.py --code 005930 --sentiments "Positive,Neutral,Positive,Positive,Neutral"
-```
-
-### 4. stock-technical
+### stock-technical
 이동평균선, 골든크로스 등 기술적 분석을 수행합니다.
 
-```bash
-python skills/stock-technical/scripts/analyze.py --code 005930
-```
+**Claude에게 요청:**
+- "005930 기술적 분석 해줘"
+- "삼성전자 차트 분석해줘"
 
-### 5. stock-fundamental
-재무 데이터를 수집하고 체크리스트를 분석합니다. 가이드라인에 따라 Agent가 생성하거나 수동으로 JSON을 작성하세요.
+### stock-fundamental
+재무 데이터를 수집하고 체크리스트를 분석합니다. Claude가 웹 검색을 통해 데이터를 수집하고 JSON을 생성합니다.
 
-### 6. stock-report
+**Claude에게 요청:**
+- "005930 기본적 분석 해줘"
+- "삼성전자 재무제표 분석해줘"
+
+### stock-report
 모든 데이터를 통합하고 **정적 HTML 리포트**를 생성합니다.
 
-```bash
-# 종목코드로
-python skills/stock-report/scripts/analyze.py --code 005930
-
-# 종목명으로 (자동 검색)
-python skills/stock-report/scripts/analyze.py --name 삼성전자
-
-# 특정 날짜 데이터
-python skills/stock-report/scripts/analyze.py --code 005930 --date 2026-01-20
-```
+**Claude에게 요청:**
+- "005930 리포트 생성해줘"
+- "삼성전자 분석 리포트 만들어줘"
 
 ## 생성되는 리포트
 
@@ -143,51 +127,52 @@ report/YYYY-MM-DD/
 
 ## 사용 예시
 
-### 삼성전자 전체 분석
+### 예시 1: 삼성전자 전체 분석
 
-```bash
-# 종목코드 검색
-python skills/stock-search/scripts/search.py 삼성전자
-# 출력: 005930
-
-# 데이터 수집
-node skills/stock-capture/scripts/capture.js 005930
-python skills/stock-news/scripts/fetch.py --code 005930
-python skills/stock-technical/scripts/analyze.py --code 005930
-
-# 기본적 분석 (Agent 또는 수동 생성)
-# → report/2026-04-22/005930_fundamental.json 생성
-
-# 리포트 생성
-python skills/stock-report/scripts/analyze.py --code 005930
-
-# 브라우저에서 확인
-start report/2026-04-22/005930_report.html
+```
+User: "삼성전자 분석해줘"
 ```
 
-### 유진로봇 간편 분석
+Claude가 자동으로 모든 스킬을 실행해서 완전한 리포트를 생성합니다.
 
-```bash
-# 한 번에 실행 (종목명으로)
-python skills/stock-report/scripts/analyze.py --name 유진로봇
+### 예시 2: 특정 종목만 분석
+
+```
+User: "009150 종목 분석해줘"
+```
+
+### 예시 3: 여러 종목 비교
+
+```
+User: "삼성전자와 SK하이닉스 비교 분석해줘"
 ```
 
 ## 지원하는 종목
 
-### 내장된 주요 종목 (20개)
+### 내장된 주요 종목 (25개)
 
 **KOSPI:** 삼성전자, SK하이닉스, NAVER, 카카오, 현대차, LG화학, LG전자, 포항홀딩스, 현대모비스, 기아, KB금융, 신한지주, 셀트리온, 삼성물산, 현대중공업, 삼성전기, 삼성SDI, 삼성에스디에스, SK, LG
 
 **KOSDAQ:** 유진로봇, LG에너지솔루션, 삼성SDS, 에코프로, 에코프로비엠, 한국금융지주
 
-그 외의 종목은 KRX 웹사이트에서 코드를 확인 후 사용하세요.
+다른 종목도 종목코드만 알면 분석할 수 있습니다.
 
 ## 시스템 요구사항
 
+- **Claude Code** 또는 **Claude CLI**
 - **Python**: 3.7+
 - **pip packages**: requests, beautifulsoup4, jinja2, finance-datareader, pandas
 - **Node.js**: 16+ (차트 캡처용, 선택사항)
 - **OS**: Windows, macOS, Linux
+
+## Claude 스킬이란?
+
+Claude 스킬은 Claude가 특정 작업을 수행하기 위해 사용하는 재사용 가능한 기능 모음입니다:
+
+- **자동화**: 복잡한 멀티스텝 작업을 자동으로 수행
+- **통합**: 여러 도구와 API를 연결
+- **재사용**: 한 번 작성하면 계속 사용
+- **확장**: 새로운 스킬을 쉽게 추가
 
 ## 참고 자료
 
@@ -201,4 +186,4 @@ MIT License
 
 ## 기여
 
-이슈 리포트와 PR 환영합니다! 
+이슈 리포트와 PR 환영합니다!
