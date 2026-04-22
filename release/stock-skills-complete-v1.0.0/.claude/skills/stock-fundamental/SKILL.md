@@ -1,3 +1,8 @@
+---
+name: stock-fundamental
+description: Agent-driven analysis of stock fundamentals using a strict checklist. This skill relies on the Agent's ability to search, reason, and structure data, without executing scraping scripts.
+---
+
 # Skill: Stock Fundamental Analysis
 
 ## Description

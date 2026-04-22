@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ fundamental.name if fundamental else code }} - Stock Analysis Report{% endblock %}
+{% block title %}{{ name }} ({{ code }}) - Stock Analysis Report{% endblock %}
 
 {% block content %}
 <!-- Header -->
@@ -20,7 +20,7 @@
         </div>
         <div>
             <h1 class="stock-name">
-                {{ fundamental.name if fundamental else code }}
+                {{ name }}
                 <a href="https://www.tossinvest.com/stocks/A{{ code }}/order" target="_blank" rel="noopener noreferrer" class="external-link">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="17 1 21 5 17 9"></polyline>
